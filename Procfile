@@ -1,1 +1,1 @@
-web: bin/boot
+web: cd build && yarn start
