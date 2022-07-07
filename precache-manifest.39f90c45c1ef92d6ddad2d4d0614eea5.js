@@ -12,11 +12,11 @@ self.__precacheManifest = [
     "url": "/inventory-management/static/js/runtime~main.31ad1e1e.js"
   },
   {
-    "revision": "7137ed8062522630b6e7",
-    "url": "/inventory-management/static/js/2.516ed73c.chunk.js"
+    "revision": "527492a98199610063cc",
+    "url": "/inventory-management/static/js/2.60930869.chunk.js"
   },
   {
-    "revision": "c6332c7bf10670db0c8f82e4b6a82b22",
+    "revision": "69884b48a955bfee65e58536fa0f1b84",
     "url": "/inventory-management/index.html"
   }
 ];
