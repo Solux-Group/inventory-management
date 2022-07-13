@@ -1,29 +1,40 @@
 import React, { Component }  from 'react';
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import PrivateRoute from "./auth";
+
 import DataBarang from "./pages/Barang/DataBarang";
 import DataPengguna from "./pages/Pengguna/DataPengguna";
 import DataKategori from "./pages/Kategori/DataKategori";
 import DataSatuan from "./pages/Satuan/DataSatuan";
+
 import IndexPage from "./pages/IndexPage";
 import LoginPage from "./pages/LoginPage";
+import PageNotFound from "./pages/PageNotFound";
+
 import TambahBarang from "./pages/Barang/TambahBarang";
 import EditBarang from "./pages/Barang/EditBarang";
+
 import Container from "./components/Container";
+
 import DataSupplier from "./pages/Supplier/DataSupplier";
 import TambahSupplier from "./pages/Supplier/TambahSupplier";
 import EditSupplier from "./pages/Supplier/EditSupplier";
+
 import DataShowroom from "./pages/Showroom/DataShowroom";
 import TambahShowroom from "./pages/Showroom/TambahShowroom";
 import EditShowroom from "./pages/Showroom/EditShowroom";
+
 import DataBarangMasuk from "./pages/BarangMasuk/DataBarangMasuk";
 import TambahBarangMasuk from "./pages/BarangMasuk/TambahBarangMasuk";
+
 import DataBarangKeluar from "./pages/BarangKeluar/DataBarangKeluar";
 import TambahBarangKeluar from "./pages/BarangKeluar/TambahBarangKeluar";
+
 import EditPengguna from "./pages/Pengguna/EditPengguna";
 import TambahPengguna from "./pages/Pengguna/TambahPengguna";
-import PageNotFound from "./pages/PageNotFound";
+
 import LaporanBarang from "./pages/Laporan/LaporanBarang";
+
 import Profile from "./pages/Profile/Profile";
 import EditProfile from "./pages/Profile/EditProfile";
 
