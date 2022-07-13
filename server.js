@@ -18,6 +18,7 @@ var barangRouter = require("./routes/barang");
 var kategoriRouter = require("./routes/kategori");
 var satuanRouter = require("./routes/satuan");
 var supplierRouter = require("./routes/supplier");
+var showroomRouter = require("./routes/showroom");
 var barangMasukRouter = require("./routes/barangMasuk");
 var barangKeluarRouter = require("./routes/barangKeluar");
 
@@ -70,6 +71,7 @@ app.use("/barang", barangRouter);
 app.use("/kategori", kategoriRouter);
 app.use("/satuan", satuanRouter);
 app.use("/supplier", supplierRouter);
+app.use("/showroom", showroomRouter);
 app.use("/barang_masuk", barangMasukRouter);
 app.use("/barang_keluar", barangKeluarRouter);
 
