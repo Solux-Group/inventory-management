@@ -70,6 +70,7 @@ const Sidebar = ({ show, onShown = () => {} }) => {
             { name: "Inventaire", href: "/barang" },
             { name: "Catégorie d'article", href: "/kategori" },
             { name: "Unité d'article", href: "/satuan" },
+            { name: "Showroom", href: "/showroom" },
           ],
         },
         {
