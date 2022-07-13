@@ -133,7 +133,7 @@ const EditShowroom = (props) => {
   return (
     <div>
       <Helmet>
-        <title>Modifier le fournisseur | INVENTORY</title>
+        <title>Modifier le showroom | INVENTORY</title>
       </Helmet>
       {showLoading ? (
         <div className="fixed bg-transparent w-full h-full z-30">
@@ -171,18 +171,18 @@ const EditShowroom = (props) => {
 
       <Card className="font-montserrat w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2 mx-auto">
         <div className="font-montserrat font-bold text-lg text-gray-500 mb-6">
-          Modifier le fournisseur
+          Modifier le showroom
         </div>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col justify-center space-y-4">
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Nom du fournisseur <span className="text-red-400">*</span>
+                Nom du showroom <span className="text-red-400">*</span>
               </div>
               <input
                 type="text"
                 className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                placeholder="Nom du fournisseur"
+                placeholder="Nom du showroom"
                 name="nama_showroom"
                 value={formData.nama_showroom}
                 onChange={handleChange}

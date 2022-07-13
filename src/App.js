@@ -13,6 +13,9 @@ import Container from "./components/Container";
 import DataSupplier from "./pages/Supplier/DataSupplier";
 import TambahSupplier from "./pages/Supplier/TambahSupplier";
 import EditSupplier from "./pages/Supplier/EditSupplier";
+import DataShowroom from "./pages/Showroom/DataShowroom";
+import TambahShowroom from "./pages/Showroom/TambahShowroom";
+import EditShowroom from "./pages/Showroom/EditShowroom";
 import DataBarangMasuk from "./pages/BarangMasuk/DataBarangMasuk";
 import TambahBarangMasuk from "./pages/BarangMasuk/TambahBarangMasuk";
 import DataBarangKeluar from "./pages/BarangKeluar/DataBarangKeluar";
@@ -105,6 +108,18 @@ function App() {
             path="/supplier/:id/edit"
             exact
             component={EditSupplier}
+          />
+
+          <PrivateRoute path="/showroom" exact component={DataShowroom} />
+          <PrivateRoute
+            path="/showroom/tambah"
+            exact
+            component={TambahShowroom}
+          />
+          <PrivateRoute
+            path="/showroom/:id/edit"
+            exact
+            component={EditShowroom}
           />
 
           <PrivateRoute

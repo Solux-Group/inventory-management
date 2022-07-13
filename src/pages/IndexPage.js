@@ -20,6 +20,7 @@ const IndexPage = () => {
   const [statistic, setStatistic] = useState({
     pengguna: 0,
     supplier: 0,
+    showroom: 0,
     barang: 0,
     pemasukan: 0,
     pengeluaran: 0,
@@ -118,6 +119,24 @@ const IndexPage = () => {
         }
       });
   };
+
+  const fetchCountShowroom = async () => {
+    await api
+      .get("/showroom/count", {
+        headers: { "x-access-token": localStorage.getItem("token") },
+      })
+      .then((response) => {
+        setStatistic((state) => ({ ...state, showroom: response.data.count }));
+      })
+      .catch((error) => {
+        // Unauthorized
+        if (error.response && error.response.status === 401) {
+          localStorage.clear();
+          return history.push("/login");
+        }
+      });
+  };
+
 
   const fetchCountBarang = async () => {
     await api
@@ -249,6 +268,7 @@ const IndexPage = () => {
       fetchCountPengguna();
     }
     fetchCountSupplier();
+    fetchCountShowroom();
     fetchCountBarang();
     fetchPemasukan();
     fetchPemasukanBulanIni();

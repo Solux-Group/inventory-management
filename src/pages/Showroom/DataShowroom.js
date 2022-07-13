@@ -35,7 +35,7 @@ const DataShowroom = () => {
     { label: "Action", field: "aksi", disabled: true },
   ];
   const headersCSV = [
-    { label: "Fournisseurs", key: "nama_showroom" },
+    { label: "Showrooms", key: "nama_showroom" },
     { label: "No telp", key: "no_telp" },
     { label: "Adresse", key: "alamat" },
   ];
