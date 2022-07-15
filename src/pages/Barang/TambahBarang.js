@@ -14,6 +14,7 @@ const TambahBarang = () => {
     harga_jual: "",
     harga_beli: "",
     id_kategori: "",
+    id_showroom: "",
     id_satuan: "",
   });
   const [formDataError, setFormDataError] = useState({
@@ -22,6 +23,7 @@ const TambahBarang = () => {
     harga_jual: false,
     harga_beli: false,
     id_kategori: false,
+    id_showroom: false,
     id_satuan: false,
   });
   const [dataKategori, setDataKategori] = useState([]);

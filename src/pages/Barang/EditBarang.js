@@ -15,6 +15,7 @@ const EditBarang = (props) => {
     harga_jual: "",
     harga_beli: "",
     id_kategori: "",
+    id_showroom: "",
     id_satuan: "",
   });
   const [formDataError, setFormDataError] = useState({
@@ -22,6 +23,7 @@ const EditBarang = (props) => {
     harga_jual: false,
     harga_beli: false,
     id_kategori: false,
+    id_showroom: false,
     id_satuan: false,
   });
   const [dataKategori, setDataKategori] = useState([]);
@@ -303,7 +305,7 @@ const EditBarang = (props) => {
             </div>
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Catégorie <span className="text-red-400">*</span>
+                Showroom <span className="text-red-400">*</span>
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"

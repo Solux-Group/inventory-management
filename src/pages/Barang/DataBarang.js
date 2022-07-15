@@ -273,7 +273,7 @@ const DataBarang = () => {
         <Card className="font-montserrat">
           <div className="flex items-start justify-between mb-4">
             <div className="font-bold text-gray-500 text-lg border-b pb-2">
-            Effacer l'article
+              Effacer l'article
             </div>
             <button
               onClick={() => {
