@@ -15,6 +15,7 @@ const TambahBarang = () => {
     harga_beli: "",
     id_kategori: "",
     id_showroom: "",
+    nama_showroom: "",
     id_satuan: "",
   });
   const [formDataError, setFormDataError] = useState({
@@ -225,12 +226,39 @@ const TambahBarang = () => {
                 className={`${
                   formDataError.nama_barang ? "" : "hidden"
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`Nama barang ${formDataError.nama_barang}`}
+                {`Nom de l'article ${formDataError.nama_barang}`}
               </div>
             </div>
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Stoque <span className="text-red-400">*</span>
+                Showroom <span className="text-red-400">*</span>
+              </div>
+              <select
+                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                value={formData.id_showroom}
+                name="id_showroom"
+                onChange={handleChange}>
+                <option value="" disabled>
+                  -- Choix de Showroom --
+                </option>
+                {datashowroom.map((value, index) => {
+                  return (
+                    <option value={value._id} key={index}>
+                      {value.nama_showroom}
+                    </option>
+                  );
+                })}
+              </select>
+              <div
+                className={`${
+                  formDataError.id_showroom ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`showroom ${formDataError.id_showroom}`}
+              </div>
+            </div>
+            <div className={`${formData.id_showroom ? "" : "hidden"} grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
+              <div className="col-span-full md:col-span-4">
+                {`Stoque ${formData.nama_showroom}`}  <span className="text-red-400">*</span>
               </div>
               <input
                 type="text"
@@ -289,33 +317,6 @@ const TambahBarang = () => {
                   formDataError.harga_beli ? "" : "hidden"
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
                 {`Harga beli ${formDataError.harga_beli}`}
-              </div>
-            </div>
-              <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
-              <div className="col-span-full md:col-span-4">
-                Showroom <span className="text-red-400">*</span>
-              </div>
-              <select
-                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                value={formData.id_showroom}
-                name="id_showroom"
-                onChange={handleChange}>
-                <option value="" disabled>
-                  -- Choix de Showroom --
-                </option>
-                {datashowroom.map((value, index) => {
-                  return (
-                    <option value={value._id} key={index}>
-                      {value.nama_showroom}
-                    </option>
-                  );
-                })}
-              </select>
-              <div
-                className={`${
-                  formDataError.id_showroom ? "" : "hidden"
-                } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom}`}
               </div>
             </div>
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
