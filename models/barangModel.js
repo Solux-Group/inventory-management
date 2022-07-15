@@ -27,6 +27,11 @@ const barangSchema = new mongoose.Schema(
       ref: "kategori",
       required: true,
     },
+    id_showroom: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "showroom",
+      required: true,
+    },
     id_satuan: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "satuan",
