@@ -32,10 +32,20 @@ const barangSchema = new mongoose.Schema(
       ref: "showroom",
       required: true,
     },
+    stok1: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
     id_showroom2: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "showroom",
       required: true,
+    },
+    stok2: {
+      type: Number,
+      required: true,
+      default: 0,
     },
     id_satuan: {
       type: mongoose.Schema.Types.ObjectId,

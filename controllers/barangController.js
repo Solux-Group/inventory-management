@@ -104,7 +104,9 @@ module.exports = {
       harga_beli,
       id_kategori,
       id_showroom1,
+      stok1,
       id_showroom2,
+      stok2,
       id_satuan,
     } = req.body;
     var isError = false;
@@ -112,6 +114,10 @@ module.exports = {
     if (nama_barang === undefined || nama_barang === "") {
       isError = true;
     } else if (stok === undefined || stok === "" || typeof stok !== 'number') {
+      isError = true;
+    } else if (stok1 === undefined || stok1 === "" || typeof stok1 !== 'number') {
+      isError = true;
+    } else if (stok2 === undefined || stok2 === "" || typeof stok2 !== 'number') {
       isError = true;
     } else if (
       harga_jual === undefined ||
@@ -150,7 +156,9 @@ module.exports = {
       harga_beli: harga_beli,
       id_kategori: id_kategori,
       id_showroom1: id_showroom1,
+      stok1: stok1,
       id_showroom2: id_showroom2,
+      stok2: stok2,
       id_satuan: id_satuan,
     });
 
