@@ -15,7 +15,8 @@ const EditBarang = (props) => {
     harga_jual: "",
     harga_beli: "",
     id_kategori: "",
-    id_showroom: "",
+    id_showroom1: "",
+    id_showroom2: "",
     id_satuan: "",
   });
   const [formDataError, setFormDataError] = useState({
@@ -23,7 +24,8 @@ const EditBarang = (props) => {
     harga_jual: false,
     harga_beli: false,
     id_kategori: false,
-    id_showroom: false,
+    id_showroom1: false,
+    id_showroom2: false,
     id_satuan: false,
   });
   const [dataKategori, setDataKategori] = useState([]);
@@ -256,7 +258,7 @@ const EditBarang = (props) => {
                 className={`${
                   formDataError.nama_barang ? "" : "hidden"
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`Nama barang ${formDataError.nama_barang}`}
+                {`Nom Marchandise ${formDataError.nama_barang}`}
               </div>
             </div>
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
@@ -278,7 +280,7 @@ const EditBarang = (props) => {
                 className={`${
                   formDataError.harga_jual ? "" : "hidden"
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`Harga jual ${formDataError.harga_jual}`}
+                {`Prix de vente ${formDataError.harga_jual}`}
               </div>
             </div>
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
@@ -300,17 +302,18 @@ const EditBarang = (props) => {
                 className={`${
                   formDataError.harga_beli ? "" : "hidden"
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`Harga beli ${formDataError.harga_beli}`}
+                {`Prix d'achat ${formDataError.harga_beli}`}
               </div>
             </div>
+
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Showroom <span className="text-red-400">*</span>
+                Showroom 1 <span className="text-red-400">*</span>
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                value={formData.id_showroom}
-                name="id_showroom"
+                value={formData.id_showroom1}
+                name="id_showroom1"
                 onChange={handleChange}>
                 <option value="" disabled>
                   -- Choix de Showroom --
@@ -325,11 +328,40 @@ const EditBarang = (props) => {
               </select>
               <div
                 className={`${
-                  formDataError.id_showroom ? "" : "hidden"
+                  formDataError.id_showroom1 ? "" : "hidden"
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom}`}
+                {`showroom ${formDataError.id_showroom1}`}
               </div>
             </div>
+
+            <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
+              <div className="col-span-full md:col-span-4">
+                Showroom 2 <span className="text-red-400">*</span>
+              </div>
+              <select
+                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                value={formData.id_showroom2}
+                name="id_showroom2"
+                onChange={handleChange}>
+                <option value="" disabled>
+                  -- Choix de Showroom --
+                </option>
+                {datashowroom.map((value, index) => {
+                  return (
+                    <option value={value._id} key={index}>
+                      {value.nama_showroom}
+                    </option>
+                  );
+                })}
+              </select>
+              <div
+                className={`${
+                  formDataError.id_showroom2 ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`showroom ${formDataError.id_showroom2}`}
+              </div>
+            </div>
+
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
                 Catégorie <span className="text-red-400">*</span>

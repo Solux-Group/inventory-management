@@ -20,18 +20,18 @@ const TambahBarang = () => {
     id_showroom2: "",
     nama_showroom1: "",
     nama_showroom2: "",
-    nama_showroom: "",
     id_satuan: "",
   });
   const [formDataError, setFormDataError] = useState({
     nama_barang: false,
+    stok1: false,
+    stok2: false,
     stok: false,
     harga_jual: false,
     harga_beli: false,
     id_kategori: false,
     id_showroom1: false,
     id_showroom2: false,
-    id_showroom: false,
     id_satuan: false,
   });
   const [dataKategori, setDataKategori] = useState([]);
