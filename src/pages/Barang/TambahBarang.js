@@ -10,11 +10,16 @@ import { useHistory } from "react-router";
 const TambahBarang = () => {
   const [formData, setFormData] = useState({
     nama_barang: "",
+    stok1: "",
+    stok2: "",
     stok: "",
     harga_jual: "",
     harga_beli: "",
     id_kategori: "",
-    id_showroom: "",
+    id_showroom1: "",
+    id_showroom2: "",
+    nama_showroom1: "",
+    nama_showroom2: "",
     nama_showroom: "",
     id_satuan: "",
   });
@@ -24,6 +29,8 @@ const TambahBarang = () => {
     harga_jual: false,
     harga_beli: false,
     id_kategori: false,
+    id_showroom1: false,
+    id_showroom2: false,
     id_showroom: false,
     id_satuan: false,
   });
@@ -229,14 +236,15 @@ const TambahBarang = () => {
                 {`Nom de l'article ${formDataError.nama_barang}`}
               </div>
             </div>
+            
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Showroom <span className="text-red-400">*</span>
+                Showroom {formData.nama_showroom1} <span className="text-red-400">*</span>
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                value={formData.id_showroom}
-                name="id_showroom"
+                value={formData.id_showroom1}
+                name="id_showroom1"
                 onChange={handleChange}>
                 <option value="" disabled>
                   -- Choix de Showroom --
@@ -251,21 +259,90 @@ const TambahBarang = () => {
               </select>
               <div
                 className={`${
-                  formDataError.id_showroom ? "" : "hidden"
+                  formDataError.id_showroom1 ? "" : "hidden"
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom}`}
+                {`showroom ${formDataError.id_showroom1}`}
               </div>
             </div>
-            <div className={`${formData.id_showroom ? "" : "hidden"} grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
+            <div className={`${formData.id_showroom1 ? "" : "hidden"} grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stoque ${formData.nama_showroom}`}  <span className="text-red-400">*</span>
+                {`Stoque ${formData.nama_showroom1}`}  <span className="text-red-400">*</span>
               </div>
               <input
                 type="text"
                 className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 placeholder="Stoque"
+                name="stok1"
+                value={0 + Number(formData.stok1)}
+                onChange={handleChange}
+              />
+              <div
+                className={`${
+                  formDataError.stok1 ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`Stok ${formDataError.stok1}`}
+              </div>
+            </div>
+
+            <div className={`${
+              formData.stok1 === "" || Number(formData.stok1) === 0 ? "hidden" : ""
+            } grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
+              <div className="col-span-full md:col-span-4">
+                Showroom {formData.nama_showroom2} <span className="text-red-400">*</span>
+              </div>
+              <select
+                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                value={formData.id_showroom2}
+                name="id_showroom2"
+                onChange={handleChange}>
+                <option value="" disabled>
+                  -- Choix de Showroom --
+                </option>
+                {datashowroom.map((value, index) => {
+                  return (
+                    <option value={value._id} key={index}>
+                      {value.nama_showroom}
+                    </option>
+                  );
+                })}
+              </select>
+              <div
+                className={`${
+                  formDataError.id_showroom2 ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`showroom ${formDataError.id_showroom2}`}
+              </div>
+            </div>
+            <div className={`${formData.id_showroom2 ? "" : "hidden"} grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
+              <div className="col-span-full md:col-span-4">
+                {`Stoque ${formData.nama_showroom2}`}  <span className="text-red-400">*</span>
+              </div>
+              <input
+                type="text"
+                className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                placeholder="Stoque"
+                name="stok2"
+                value={0 + Number(formData.stok2)}
+                onChange={handleChange}
+              />
+              <div
+                className={`${
+                  formDataError.stok2 ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`Stok ${formDataError.stok2}`}
+              </div>
+            </div>
+
+            <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
+              <div className="col-span-full md:col-span-4">
+                {`Stoque Total`}  <span className="text-red-400">*</span>
+              </div>
+              <input
+                type="text"
+                className="cursor-not-allowed col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                placeholder="Stoque"
                 name="stok"
-                value={formData.stok}
+                value={formData.stok = Number(formData.stok1) + Number(formData.stok2)}
                 onChange={handleChange}
               />
               <div
