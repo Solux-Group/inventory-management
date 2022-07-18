@@ -18,8 +18,6 @@ const TambahBarang = () => {
     id_kategori: "",
     id_showroom1: "",
     id_showroom2: "",
-    nama_showroom1: "",
-    nama_showroom2: "",
     id_satuan: "",
   });
   const [formDataError, setFormDataError] = useState({
@@ -117,7 +115,7 @@ const TambahBarang = () => {
     var value = e.target.value;
 
     // only number
-    if (name === "stok" || name === "harga_jual" || name === "harga_beli") {
+    if (name === "stok" || name === "stok1" || name === "stok2" || name === "harga_jual" || name === "harga_beli") {
       value = value.replace(/\D/g, "");
       value = value === "" ? '' : parseInt(value);
     }
@@ -239,7 +237,7 @@ const TambahBarang = () => {
             
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Showroom {formData.nama_showroom1} <span className="text-red-400">*</span>
+                Showroom {formData.nama_showroom} <span className="text-red-400">*</span>
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
@@ -266,14 +264,14 @@ const TambahBarang = () => {
             </div>
             <div className={`${formData.id_showroom1 ? "" : "hidden"} grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stoque ${formData.nama_showroom1}`}  <span className="text-red-400">*</span>
+                {`Stoque ${formData.nama_showroom}`}  <span className="text-red-400">*</span>
               </div>
               <input
                 type="text"
                 className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 placeholder="Stoque"
                 name="stok1"
-                value={0 + Number(formData.stok1)}
+                value={0 + formData.stok1}
                 onChange={handleChange}
               />
               <div
@@ -285,10 +283,10 @@ const TambahBarang = () => {
             </div>
 
             <div className={`${
-              formData.stok1 === "" || Number(formData.stok1) === 0 ? "hidden" : ""
+              formData.stok1 === "" || formData.stok1 === 0 ? "hidden" : ""
             } grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                Showroom {formData.nama_showroom2} <span className="text-red-400">*</span>
+                Showroom {formData.nama_showroom} <span className="text-red-400">*</span>
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
@@ -315,14 +313,14 @@ const TambahBarang = () => {
             </div>
             <div className={`${formData.id_showroom2 ? "" : "hidden"} grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stoque ${formData.nama_showroom2}`}  <span className="text-red-400">*</span>
+                {`Stoque ${formData.nama_showroom}`}  <span className="text-red-400">*</span>
               </div>
               <input
                 type="text"
                 className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 placeholder="Stoque"
                 name="stok2"
-                value={0 + Number(formData.stok2)}
+                value={0 + formData.stok2}
                 onChange={handleChange}
               />
               <div
@@ -342,7 +340,7 @@ const TambahBarang = () => {
                 className="cursor-not-allowed col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 placeholder="Stoque"
                 name="stok"
-                value={formData.stok = Number(formData.stok1) + Number(formData.stok2)}
+                value={formData.stok = formData.stok1 + formData.stok2}
                 onChange={handleChange}
               />
               <div
