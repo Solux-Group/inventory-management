@@ -35,13 +35,14 @@ module.exports = {
     barangModel
       .find(filter)
       .select(
-        "kode_barang nama_barang stok harga_jual harga_beli id_kategori id_showroom id_satuan"
+        "kode_barang nama_barang stok harga_jual harga_beli id_kategori id_showroom1 id_showroom2 id_satuan"
       )
       .skip((page - 1) * rows)
       .limit(rows)
       .sort([[field, direction]])
       .populate("id_kategori")
-      .populate("id_showroom")
+      .populate("id_showroom1")
+      .populate("id_showroom2")
       .populate("id_satuan")
       .exec(function (error, data) {
         if (error) {
@@ -92,7 +93,7 @@ module.exports = {
         }
       })
       .select(
-        "kode_barang nama_barang stok harga_jual harga_beli id_kategori id_showroom id_satuan"
+        "kode_barang nama_barang stok harga_jual harga_beli id_kategori id_showroom1 id_showroom2 id_satuan"
       );
   },
   create: (req, res, next) => {
@@ -102,7 +103,8 @@ module.exports = {
       harga_jual,
       harga_beli,
       id_kategori,
-      id_showroom,
+      id_showroom1,
+      id_showroom2,
       id_satuan,
     } = req.body;
     var isError = false;
@@ -125,7 +127,9 @@ module.exports = {
       isError = true;
     } else if (id_kategori === undefined || id_kategori === "") {
       isError = true;
-    } else if (id_showroom === undefined || id_showroom === "") {
+    } else if (id_showroom1 === undefined || id_showroom1 === "") {
+      isError = true;
+    } else if (id_showroom2 === undefined || id_showroom2 === "") {
       isError = true;
     } else if (id_satuan === undefined || id_satuan === "") {
       isError = true;
@@ -145,7 +149,8 @@ module.exports = {
       harga_jual: harga_jual,
       harga_beli: harga_beli,
       id_kategori: id_kategori,
-      id_showroom: id_showroom,
+      id_showroom1: id_showroom1,
+      id_showroom2: id_showroom2,
       id_satuan: id_satuan,
     });
 
@@ -164,7 +169,7 @@ module.exports = {
   },
   update: (req, res, next) => {
     const { id } = req.params;
-    const { nama_barang, harga_jual, harga_beli, id_kategori, id_showroom, id_satuan } =
+    const { nama_barang, harga_jual, harga_beli, id_kategori, id_showroom1, id_showroom2, id_satuan } =
       req.body;
     var isError = false;
 
@@ -184,7 +189,9 @@ module.exports = {
       isError = true;
     } else if (id_kategori === undefined || id_kategori === "") {
       isError = true;
-    } else if (id_showroom === undefined || id_showroom === "") {
+    } else if (id_showroom1 === undefined || id_showroom1 === "") {
+      isError = true;
+    } else if (id_showroom2 === undefined || id_showroom2 === "") {
       isError = true;
     } else if (id_satuan === undefined || id_satuan === "") {
       isError = true;
@@ -205,7 +212,8 @@ module.exports = {
         harga_jual: harga_jual,
         harga_beli: harga_beli,
         id_kategori: id_kategori,
-        id_showroom: id_showroom,
+        id_showroom1: id_showroom1,
+        id_showroom2: id_showroom2,
         id_satuan: id_satuan,
       },
       function (error) {
