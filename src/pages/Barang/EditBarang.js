@@ -321,7 +321,8 @@ const EditBarang = (props) => {
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 value={formData.id_showroom1}
                 name="id_showroom1"
-                onChange={handleChange}>
+                //onChange={handleChange}
+                >
                 <option value="" disabled>
                   -- Choix de Showroom --
                 </option>
@@ -356,7 +357,7 @@ const EditBarang = (props) => {
                 placeholder="Stoque"
                 name="stok1"
                 value={formData.stok1}
-                onChange={handleChange}
+                //onChange={handleChange}
               />
               <div
                 className={`${
@@ -374,7 +375,8 @@ const EditBarang = (props) => {
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 value={formData.id_showroom2}
                 name="id_showroom2"
-                onChange={handleChange}>
+                //onChange={handleChange}
+                >
                 <option value="" disabled>
                   -- Choix de Showroom --
                 </option>
@@ -403,7 +405,7 @@ const EditBarang = (props) => {
                 placeholder="Stoque"
                 name="stok2"
                 value={formData.stok2}
-                onChange={handleChange}
+                //onChange={handleChange}
                 />
                 <div
                   className={`${
