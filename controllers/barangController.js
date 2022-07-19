@@ -35,14 +35,16 @@ module.exports = {
     barangModel
       .find(filter)
       .select(
-        "kode_barang nama_barang stok harga_jual harga_beli id_kategori id_showroom1 id_showroom2 id_satuan"
+        "kode_barang nama_barang stok harga_jual harga_beli id_kategori id_showroom1 stok1 id_showroom2 stok2 id_satuan"
       )
       .skip((page - 1) * rows)
       .limit(rows)
       .sort([[field, direction]])
       .populate("id_kategori")
       .populate("id_showroom1")
+      .populate("stok1")
       .populate("id_showroom2")
+      .populate("stok2")
       .populate("id_satuan")
       .exec(function (error, data) {
         if (error) {
@@ -93,7 +95,7 @@ module.exports = {
         }
       })
       .select(
-        "kode_barang nama_barang stok harga_jual harga_beli id_kategori id_showroom1 id_showroom2 id_satuan"
+        "kode_barang nama_barang stok harga_jual harga_beli id_kategori id_showroom1 stok1 id_showroom2 stok2 id_satuan"
       );
   },
   create: (req, res, next) => {
@@ -177,7 +179,7 @@ module.exports = {
   },
   update: (req, res, next) => {
     const { id } = req.params;
-    const { nama_barang, harga_jual, harga_beli, id_kategori, id_showroom1, id_showroom2, id_satuan } =
+    const { nama_barang, harga_jual, harga_beli, id_kategori, id_showroom1, stok1, id_showroom2, stok2, id_satuan } =
       req.body;
     var isError = false;
 
@@ -193,6 +195,18 @@ module.exports = {
       harga_beli === undefined ||
       harga_beli === "" ||
       typeof harga_beli !== 'number'
+    ) {
+      isError = true;
+    }  else if (
+      stok1 === undefined ||
+      stok1 === "" ||
+      typeof stok1 !== 'number'
+    ) {
+      isError = true;
+    }   else if (
+      stok2 === undefined ||
+      stok2 === "" ||
+      typeof stok2 !== 'number'
     ) {
       isError = true;
     } else if (id_kategori === undefined || id_kategori === "") {
@@ -221,7 +235,9 @@ module.exports = {
         harga_beli: harga_beli,
         id_kategori: id_kategori,
         id_showroom1: id_showroom1,
+        stok1: stok1,
         id_showroom2: id_showroom2,
+        stok2: stok2,
         id_satuan: id_satuan,
       },
       function (error) {
