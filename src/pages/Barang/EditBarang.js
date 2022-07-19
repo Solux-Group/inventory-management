@@ -12,6 +12,9 @@ const EditBarang = (props) => {
   const { id } = props.match.params;
   const [formData, setFormData] = useState({
     nama_barang: "",
+    stok1: "",
+    stok2: "",
+    stok: "",
     harga_jual: "",
     harga_beli: "",
     id_kategori: "",
@@ -21,6 +24,9 @@ const EditBarang = (props) => {
   });
   const [formDataError, setFormDataError] = useState({
     nama_barang: false,
+    stok1: false,
+    stok2: false,
+    stok: false,
     harga_jual: false,
     harga_beli: false,
     id_kategori: false,
@@ -47,7 +53,8 @@ const EditBarang = (props) => {
         },
       })
       .then((response) => {
-        delete response.data.data.stok;
+        delete response.data.data.stok1;
+        delete response.data.data.stok1
         setFormData(response.data.data);
       })
       .catch((error) => {
@@ -136,7 +143,7 @@ const EditBarang = (props) => {
     var value = e.target.value;
 
     // only number
-    if (name === "harga_jual" || name === "harga_beli") {
+    if (name === "stock1" || name === "stock2" || name === "harga_jual" || name === "harga_beli") {
       value = value.replace(/\D/g, "");
       value = value === "" ? '' : parseInt(value);
     }
@@ -332,6 +339,31 @@ const EditBarang = (props) => {
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
                 {`showroom ${formDataError.id_showroom1}`}
               </div>
+              <div
+                className={`${
+                  formDataError.id_showroom1 ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`showroom ${formDataError.id_showroom1}`}
+              </div>
+            </div>
+            <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
+              <div className="col-span-full md:col-span-4">
+                {`Stoque 1`}  <span className="text-red-400">*</span>
+              </div>
+              <input
+                type="text"
+                className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                placeholder="Stoque"
+                name="stok1"
+                value={formData.stok1}
+                onChange={handleChange}
+              />
+              <div
+                className={`${
+                  formDataError.stok1 ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`Stok ${formDataError.stok1}`}
+              </div>
             </div>
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
@@ -360,6 +392,38 @@ const EditBarang = (props) => {
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
                 {`showroom ${formDataError.id_showroom2}`}
               </div>
+            </div>
+            <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
+                <div className="col-span-full md:col-span-4">
+                  {`Stoque 2`}  <span className="text-red-400">*</span>
+                </div>
+                <input
+                type="text"
+                className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                placeholder="Stoque"
+                name="stok2"
+                value={formData.stok2}
+                onChange={handleChange}
+                />
+                <div
+                  className={`${
+                    formDataError.stok2 ? "" : "hidden"
+                  } md:col-start-5 col-span-full text-sm text-red-400`}>
+                  {`Stok ${formDataError.stok2}`}
+                </div>
+            </div>
+
+            <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
+                <div className="col-span-full md:col-span-4">
+                  {`Stoque Total`}  <span className="text-red-400">*</span>
+                </div>
+                {formData.stok}
+                <div
+                  className={`${
+                    formDataError.stok ? "" : "hidden"
+                  } md:col-start-5 col-span-full text-sm text-red-400`}>
+                  {`Stok ${formDataError.stok}`}
+                </div>
             </div>
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
