@@ -179,11 +179,17 @@ module.exports = {
   },
   update: (req, res, next) => {
     const { id } = req.params;
-    const { nama_barang, harga_jual, harga_beli, id_kategori, id_showroom1, stok1, id_showroom2, stok2, id_satuan } =
+    const { nama_barang, stok, harga_jual, harga_beli, id_kategori, id_showroom1, stok1, id_showroom2, stok2, id_satuan } =
       req.body;
     var isError = false;
 
     if (nama_barang === undefined || nama_barang === "") {
+      isError = true;
+    } else if (
+      stok === undefined ||
+      stok === "" ||
+      typeof stok !== 'number'
+    ) {
       isError = true;
     } else if (
       harga_jual === undefined ||
@@ -231,6 +237,7 @@ module.exports = {
       id,
       {
         nama_barang: nama_barang,
+        stok: stok,
         harga_jual: harga_jual,
         harga_beli: harga_beli,
         id_kategori: id_kategori,
