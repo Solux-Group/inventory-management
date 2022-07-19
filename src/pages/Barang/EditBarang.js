@@ -12,26 +12,26 @@ const EditBarang = (props) => {
   const { id } = props.match.params;
   const [formData, setFormData] = useState({
     nama_barang: "",
-    stok1: "",
-    stok2: "",
     stok: "",
     harga_jual: "",
     harga_beli: "",
     id_kategori: "",
     id_showroom1: "",
+    stok1: "",
     id_showroom2: "",
+    stok2: "",
     id_satuan: "",
   });
   const [formDataError, setFormDataError] = useState({
     nama_barang: false,
-    stok1: false,
-    stok2: false,
     stok: false,
     harga_jual: false,
     harga_beli: false,
     id_kategori: false,
     id_showroom1: false,
+    stok1: false,
     id_showroom2: false,
+    stok2: false,
     id_satuan: false,
   });
   const [dataKategori, setDataKategori] = useState([]);
@@ -53,8 +53,8 @@ const EditBarang = (props) => {
         },
       })
       .then((response) => {
-        delete response.data.data.stok1;
-        delete response.data.data.stok1
+        // delete response.data.data.stok1;
+        // delete response.data.data.stok2;
         setFormData(response.data.data);
       })
       .catch((error) => {
@@ -143,7 +143,7 @@ const EditBarang = (props) => {
     var value = e.target.value;
 
     // only number
-    if (name === "stock1" || name === "stock2" || name === "harga_jual" || name === "harga_beli") {
+    if (name === "stock" || name === "stock1" || name === "stock2" || name === "harga_jual" || name === "harga_beli") {
       value = value.replace(/\D/g, "");
       value = value === "" ? '' : parseInt(value);
     }
@@ -417,7 +417,7 @@ const EditBarang = (props) => {
                 <div className="col-span-full md:col-span-4">
                   {`Stoque Total`}  <span className="text-red-400">*</span>
                 </div>
-                {formData.stok}
+                {formData.stok = Number(formData.stok1) + Number(formData.stok2)}
                 <div
                   className={`${
                     formDataError.stok ? "" : "hidden"
