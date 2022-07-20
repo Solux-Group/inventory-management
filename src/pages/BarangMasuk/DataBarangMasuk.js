@@ -32,6 +32,7 @@ const DataBarangMasuk = () => {
     { label: "No Transaction", field: "no_transaksi" },
     { label: "Fournisseurs", field: "nama_supplier", disabled: true },
     { label: "Nom des marchandises", field: "nama_barang", disabled: true },
+    { label: "Showrooms", field: "nama_showroom", disabled: true },
     { label: "Quantité", field: "kuantitas" },
     { label: "Prix ​​d'achat", field: "harga_beli", disabled: true },
     { label: "Prix ​​total", field: "total_harga", disabled: true },
@@ -43,6 +44,7 @@ const DataBarangMasuk = () => {
     { label: "No Transaction", key: "no_transaksi" },
     { label: "Fournisseurs", key: "supplier" },
     { label: "Nom des marchandises", key: "nama_barang" },
+    { label: "Showrooms", key: "showroom" },
     { label: "Quantité", key: "kuantitas" },
     { label: "Prix ​​d'achat", key: "harga_beli" },
     { label: "Prix ​​total", key: "total_harga" },
@@ -104,6 +106,9 @@ const DataBarangMasuk = () => {
               nama_barang: value.barang_masuk
                 ? value.barang_masuk.nama_barang
                 : null,
+              showroom: value.id_showroom
+              ? value.id_showroom.nama_showroom
+              : null,
               kuantitas: value.kuantitas,
               harga_beli: value.harga_beli,
               total_harga: value.harga_beli * value.kuantitas,
@@ -189,6 +194,9 @@ const DataBarangMasuk = () => {
           </td>
           <td className="border">
             {value.barang_masuk ? value.barang_masuk.nama_barang : "-"}
+          </td>
+          <td className="border">
+            {value.id_showroom ? value.id_showroom.nama_showroom : "-"}
           </td>
           <td className="border text-center">{value.kuantitas}</td>
           <td className="border text-right">{`CFA ${value.harga_beli.toLocaleString(
@@ -322,7 +330,7 @@ const DataBarangMasuk = () => {
           className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded focus:ring focus:ring-indigo-100 focus:outline-none px-4 py-1.5 ml-2"
           headers={headersCSV}
           data={dataCSV}
-          filename="Data_Barang_Masuk_INVENTORY.csv"
+          filename="Solux_Donnée_Marchandises_Entrantes.csv"
           target="_blank">
           <FontAwesomeIcon icon={faFileAlt} className="mr-2" />
           Exporter

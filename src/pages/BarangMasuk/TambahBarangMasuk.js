@@ -10,6 +10,7 @@ import Loading from "../../components/elements/Loading";
 const TambahBarangMasuk = () => {
   const [formData, setFormData] = useState({
     id_supplier: "",
+    id_showroom: "",
     kode_barang: "",
     kuantitas: "",
     harga_beli: "",
@@ -17,12 +18,14 @@ const TambahBarangMasuk = () => {
   });
   const [formDataError, setFormDataError] = useState({
     id_supplier: false,
+    id_showroom: false,
     kode_barang: false,
     kuantitas: false,
     harga_beli: false,
   });
   const [dataBarang, setDataBarang] = useState([]);
   const [dataSupplier, setDataSupplier] = useState([]);
+  const [dataShowroom, setDataShowroom] = useState([]);
   const [showLoading, setShowLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alert, setAlert] = useState({
@@ -59,6 +62,25 @@ const TambahBarangMasuk = () => {
       })
       .then((response) => {
         setDataSupplier(response.data.data);
+      })
+      .catch((error) => {
+        // Unauthorized
+        if (error.response && error.response.status === 401) {
+          localStorage.clear();
+          return history.push("/login");
+        }
+      });
+  };
+  
+  const fetchShowroom = async () => {
+    await api
+      .get("/showroom", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        setDataShowroom(response.data.data);
       })
       .catch((error) => {
         // Unauthorized
@@ -155,6 +177,7 @@ const TambahBarangMasuk = () => {
 
     fetchBarang();
     fetchSupplier();
+    fetchShowroom();
   }, []);
 
   return (
@@ -256,7 +279,38 @@ const TambahBarangMasuk = () => {
                 {`Barang ${formDataError.kode_barang}`}
               </div>
             </div>
-            <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
+
+            <div className={"grid grid-cols-12 items-center gap-x-4 gap-y-1"}>
+              <div className="col-span-full md:col-span-4">
+                Showroom {formData.nama_showroom} <span className="text-red-400">*</span>
+              </div>
+              <select
+                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                value={formData.id_showroom}
+                name="id_showroom"
+                onChange={handleChange}>
+                <option value="" disabled>
+                  -- Choix de Showroom --
+                </option>
+                {dataShowroom.map((value, index) => {
+                  return (
+                    <option value={value._id} key={index}>
+                      {value.nama_showroom}
+                    </option>
+                  );
+                })}
+              </select>
+              <div
+                className={`${
+                  formDataError.id_showroom ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`showroom ${formDataError.id_showroom}`}
+              </div>
+            </div>
+
+            <div className={`${
+              formData.id_showroom ? "" : "hidden"
+            } grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
                 Quantité <span className="text-red-400">*</span>
               </div>
@@ -275,6 +329,7 @@ const TambahBarangMasuk = () => {
                 {`Quantité ${formDataError.kuantitas}`}
               </div>
             </div>
+
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
                 Prix ​​d'achat <span className="text-red-400">*</span>

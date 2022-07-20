@@ -375,6 +375,7 @@ const EditBarang = (props) => {
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 value={formData.id_showroom2}
                 name="id_showroom2"
+                disabled
                 //onChange={handleChange}
                 >
                 <option value="" disabled>
@@ -405,6 +406,7 @@ const EditBarang = (props) => {
                 placeholder="Stoque"
                 name="stok2"
                 value={formData.stok2}
+                disabled
                 //onChange={handleChange}
                 />
                 <div

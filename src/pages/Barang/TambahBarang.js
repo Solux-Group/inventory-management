@@ -337,11 +337,12 @@ const TambahBarang = () => {
               </div>
               <input
                 type="text"
-                className="cursor-not-allowed col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 placeholder="Stoque"
                 name="stok"
                 value={formData.stok = formData.stok1 + formData.stok2}
-                onChange={handleChange}
+                disabled
+                //onChange={handleChange}
               />
               <div
                 className={`${
