@@ -181,7 +181,9 @@ const DataBarangKeluar = () => {
           <td className="border text-center">{no + (index + 1)}</td>
           <td className="border text-center font-lato">{value.no_transaksi}</td>
           <td className="border">{value.barang_keluar.nama_barang}</td>
-          <td className="border">{value.id_showroom.nama_showroom}</td>
+          <td className="border">
+            {value.id_showroom ? value.id_showroom.nama_showroom : "-"}
+          </td>
           <td className="border text-center">{value.kuantitas}</td>
           <td className="border text-right">{`CFA ${value.harga_jual.toLocaleString(
             { style: "currency", currency: "IDR" }
