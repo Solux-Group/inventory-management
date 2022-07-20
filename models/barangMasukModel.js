@@ -18,6 +18,10 @@ const barangMasukSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    id_showroom: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "showroom",
+    },
     kuantitas: {
       type: Number,
       required: true,
