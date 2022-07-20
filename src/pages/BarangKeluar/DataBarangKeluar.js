@@ -310,7 +310,7 @@ const DataBarangKeluar = () => {
           className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded focus:ring focus:ring-indigo-100 focus:outline-none px-4 py-1.5 ml-2"
           headers={headersCSV}
           data={dataCSV}
-          filename="Data_Barang_Keluar_INVENTORY.csv"
+          filename="Solux_Données_de_Sortie.csv"
           target="_blank">
           <FontAwesomeIcon icon={faFileAlt} className="mr-2" />
           Exporter
