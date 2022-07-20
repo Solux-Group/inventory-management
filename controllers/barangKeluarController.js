@@ -121,15 +121,7 @@ module.exports = {
           select: "nama_satuan",
         },
       })
-      // .populate({
-      //   path: "barang_keluar",
-      //   select: "nama_barang id_showroom",
-      //   populate: {
-      //     path: "id_showroom",
-      //     model: "showroom",
-      //     select: "nama_showroom",
-      //   },
-      // })
+      .populate("id_showroom")
       .populate("user_input", "nama")
       .exec(function (error, data) {
         if (error) {
@@ -169,15 +161,7 @@ module.exports = {
           select: "nama_satuan",
         },
       })
-      // .populate({
-      //   path: "barang_keluar",
-      //   select: "nama_barang id_showroom",
-      //   populate: {
-      //     path: "id_showroom",
-      //     model: "showroom",
-      //     select: "nama_showroom",
-      //   },
-      // })
+      .populate("id_showroom")
       .populate("user_input", "nama")
       .exec(function (error, data) {
         if (error) {
