@@ -32,7 +32,7 @@ const DataBarangKeluar = () => {
     { label: "No", field: "created_at", disabled: true },
     { label: "No Transaction", field: "no_transaksi" },
     { label: "Nom des marchandises", field: "nama_barang", disabled: true },
-    { label: "Showrooms", field: "nama_showroom", disabled: true },
+    { label: "Showroom", field: "nama_showroom", disabled: true },
     { label: "Quantité", field: "kuantitas" },
     { label: "Prix ​​de vente", field: "harga_jual", disabled: true },
     { label: "Prix ​​total", field: "total_harga", disabled: true },
@@ -43,7 +43,7 @@ const DataBarangKeluar = () => {
   const headersCSV = [
     { label: "No Transaction", key: "no_transaksi" },
     { label: "Nom des marchandises", key: "nama_barang" },
-    { label: "Showrooms", key: "nama_showroom" },
+    { label: "Showroom", key: "nama_showroom" },
     { label: "Quantité", key: "kuantitas" },
     { label: "Prix ​​de vente", key: "harga_jual" },
     { label: "Prix ​​total", key: "total_harga" },
