@@ -109,7 +109,7 @@ module.exports = {
     barangKeluarModel
       .find(filter)
       .select(
-        "no_transaksi kode_barang harga_jual kuantitas username created_at"
+        "no_transaksi kode_barang id_showroom harga_jual kuantitas username created_at"
       )
       .sort([["created_at", -1]])
       .populate({
@@ -119,6 +119,15 @@ module.exports = {
           path: "id_satuan",
           model: "satuan",
           select: "nama_satuan",
+        },
+      })
+      .populate({
+        path: "barang_keluar",
+        select: "nama_barang id_showroom",
+        populate: {
+          path: "id_showroom",
+          model: "showroom",
+          select: "nama_showroom",
         },
       })
       .populate("user_input", "nama")
@@ -146,7 +155,7 @@ module.exports = {
     barangKeluarModel
       .find(filter)
       .select(
-        "no_transaksi kode_barang harga_jual kuantitas username created_at"
+        "no_transaksi kode_barang id_showroom harga_jual kuantitas username created_at"
       )
       .skip((page - 1) * rows)
       .limit(rows)
@@ -158,6 +167,15 @@ module.exports = {
           path: "id_satuan",
           model: "satuan",
           select: "nama_satuan",
+        },
+      })
+      .populate({
+        path: "barang_keluar",
+        select: "nama_barang id_showroom",
+        populate: {
+          path: "id_showroom",
+          model: "showroom",
+          select: "nama_showroom",
         },
       })
       .populate("user_input", "nama")
@@ -195,10 +213,12 @@ module.exports = {
       });
   },
   create: async (req, res, next) => {
-    const { kode_barang, kuantitas, harga_jual, username } = req.body;
+    const { kode_barang, id_showroom, kuantitas, harga_jual, username } = req.body;
     var isError = false;
 
     if (kode_barang === undefined || kode_barang === "") {
+      isError = true;
+    } else if (id_showroom === undefined || id_showroom === "") {
       isError = true;
     } else if (
       kuantitas === undefined ||
@@ -232,6 +252,7 @@ module.exports = {
 
       const newBarangKeluar = new barangKeluarModel({
         kode_barang: kode_barang,
+        id_showroom: id_showroom,
         kuantitas: kuantitas,
         harga_jual: harga_jual,
         username: username,

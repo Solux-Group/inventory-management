@@ -110,7 +110,7 @@ module.exports = {
     barangMasukModel
       .find(filter)
       .select(
-        "no_transaksi kode_barang harga_beli kuantitas id_supplier username created_at"
+        "no_transaksi kode_barang harga_beli kuantitas id_showroom id_supplier username created_at"
       )
       .sort([["created_at", -1]])
       .populate({
@@ -123,6 +123,7 @@ module.exports = {
         },
       })
       .populate("id_supplier")
+      .populate("id_showroom")
       .populate("user_input", "nama")
       .exec(function (error, data) {
         if (error) {
@@ -148,7 +149,7 @@ module.exports = {
     barangMasukModel
       .find(filter)
       .select(
-        "no_transaksi kode_barang harga_beli kuantitas id_supplier username created_at"
+        "no_transaksi kode_barang harga_beli kuantitas id_showroom id_supplier username created_at"
       )
       .skip((page - 1) * rows)
       .limit(rows)
@@ -163,6 +164,7 @@ module.exports = {
         },
       })
       .populate("id_supplier")
+      .populate("id_showroom")
       .populate("user_input", "nama")
       .exec(function (error, data) {
         if (error) {
@@ -198,11 +200,13 @@ module.exports = {
       });
   },
   create: async (req, res, next) => {
-    const { id_supplier, kode_barang, kuantitas, harga_beli, username } =
+    const { id_supplier, id_showroom, kode_barang, kuantitas, harga_beli, username } =
       req.body;
     var isError = false;
 
     if (id_supplier === undefined || id_supplier === "") {
+      isError = true;
+    } else if (id_showroom === undefined || id_showroom === "") {
       isError = true;
     } else if (kode_barang === undefined || kode_barang === "") {
       isError = true;
@@ -238,6 +242,7 @@ module.exports = {
 
       const newBarangMasuk = new barangMasukModel({
         id_supplier: id_supplier,
+        id_showroom: id_showroom,
         kode_barang: kode_barang,
         kuantitas: kuantitas,
         harga_beli: harga_beli,
