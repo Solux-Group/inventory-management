@@ -11,17 +11,20 @@ import Loading from "../../components/elements/Loading";
 const TambahBarangKeluar = () => {
   const [formData, setFormData] = useState({
     kode_barang: "",
-    stok: 0,
+    id_showroom: "",
     kuantitas: "",
     harga_jual: 0,
     username: localStorage.getItem("username"),
   });
   const [formDataError, setFormDataError] = useState({
     kode_barang: false,
+    id_showroom: false,
     kuantitas: false,
     harga_jual: false,
   });
+
   const [dataBarang, setDataBarang] = useState([]);
+  const [dataShowroom, setDataShowroom] = useState([]);
   const [showLoading, setShowLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alert, setAlert] = useState({
@@ -39,6 +42,25 @@ const TambahBarangKeluar = () => {
       })
       .then((response) => {
         setDataBarang(response.data.data);
+      })
+      .catch((error) => {
+        // Unauthorized
+        if (error.response && error.response.status === 401) {
+          localStorage.clear();
+          return history.push("/login");
+        }
+      });
+  };
+
+  const fetchShowroom = async () => {
+    await api
+      .get("/showroom", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        setDataShowroom(response.data.data);
       })
       .catch((error) => {
         // Unauthorized
@@ -68,6 +90,18 @@ const TambahBarangKeluar = () => {
     const name = e.target.name;
     var value = e.target.value;
 
+    if(formData.id_showroom1 === undefined || formData.id_showroom1 === ""){
+      setFormData.id_showroom = formData.id_showroom2
+    } else{
+      setFormData.id_showroom = formData.id_showroom1
+    }
+
+    if(formData.stok1 === undefined || formData.stok1 === ""){
+      setFormData.stok = formData.stok2
+    } else{
+      setFormData.stok = formData.stok1
+    }
+
     // only number
     if (name === "kuantitas") {
       value = value.replace(/\D/g, "");
@@ -94,6 +128,7 @@ const TambahBarangKeluar = () => {
       }
       setFormDataError((state) => ({ ...state, [name]: false }));
     }
+  
   };
 
   const handleSubmit = async (e) => {
@@ -136,6 +171,7 @@ const TambahBarangKeluar = () => {
     });
 
     fetchBarang();
+    fetchShowroom();
   }, []);
 
   return (
@@ -210,6 +246,36 @@ const TambahBarangKeluar = () => {
                 {`Barang ${formDataError.kode_barang}`}
               </div>
             </div>
+
+            <div className={"grid grid-cols-12 items-center gap-x-4 gap-y-1"}>
+              <div className="col-span-full md:col-span-4">
+                Showroom <span className="text-red-400">*</span>
+              </div>
+              <select
+                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                value={formData.id_showroom}
+                name="id_showroom"
+                onChange={handleChange}>
+                <option value="" disabled>
+                  -- Choix de Showroom --
+                </option>
+                {dataShowroom.map((value, index) => {
+                  return (
+                    <option value={value._id} key={index}>
+                      {value.nama_showroom}
+                    </option>
+                  );
+                })}
+              </select>
+              <div
+                className={`${
+                  formDataError.id_showroom ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`showroom ${formDataError.id_showroom}`}
+              </div>
+            </div>
+
+
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
                 Stock disponible <span className="text-red-400">*</span>

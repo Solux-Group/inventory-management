@@ -32,6 +32,7 @@ const DataBarangKeluar = () => {
     { label: "No", field: "created_at", disabled: true },
     { label: "No Transaction", field: "no_transaksi" },
     { label: "Nom des marchandises", field: "nama_barang", disabled: true },
+    { label: "Showrooms", field: "nama_showroom", disabled: true },
     { label: "Quantité", field: "kuantitas" },
     { label: "Prix ​​de vente", field: "harga_jual", disabled: true },
     { label: "Prix ​​total", field: "total_harga", disabled: true },
@@ -42,6 +43,7 @@ const DataBarangKeluar = () => {
   const headersCSV = [
     { label: "No Transaction", key: "no_transaksi" },
     { label: "Nom des marchandises", key: "nama_barang" },
+    { label: "Showrooms", key: "nama_showroom" },
     { label: "Quantité", key: "kuantitas" },
     { label: "Prix ​​de vente", key: "harga_jual" },
     { label: "Prix ​​total", key: "total_harga" },
@@ -62,8 +64,7 @@ const DataBarangKeluar = () => {
     totalPagesFiltered: 0,
     totalRowsFiltered: 0,
   });
-  const [showModalDeleteBarangKeluar, setShowModalDeleteBarangKeluar] =
-    useState(false);
+  const [showModalDeleteBarangKeluar, setShowModalDeleteBarangKeluar] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [alert, setAlert] = useState({
@@ -98,6 +99,7 @@ const DataBarangKeluar = () => {
             data.push({
               no_transaksi: value.no_transaksi,
               nama_barang: value.barang_keluar.nama_barang,
+              nama_showroom: value.id_showroom.nama_showroom,
               kuantitas: value.kuantitas,
               harga_jual: value.harga_jual,
               total_harga: value.harga_jual * value.kuantitas,
@@ -179,6 +181,7 @@ const DataBarangKeluar = () => {
           <td className="border text-center">{no + (index + 1)}</td>
           <td className="border text-center font-lato">{value.no_transaksi}</td>
           <td className="border">{value.barang_keluar.nama_barang}</td>
+          <td className="border">{value.id_showroom.nama_showroom}</td>
           <td className="border text-center">{value.kuantitas}</td>
           <td className="border text-right">{`CFA ${value.harga_jual.toLocaleString(
             { style: "currency", currency: "IDR" }
