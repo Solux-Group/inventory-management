@@ -153,7 +153,6 @@ module.exports = {
 
     const newBarang = new barangModel({
       nama_barang: nama_barang,
-      stok: stok,
       harga_jual: harga_jual,
       harga_beli: harga_beli,
       id_kategori: id_kategori,
@@ -161,6 +160,7 @@ module.exports = {
       stok1: stok1,
       id_showroom2: id_showroom2,
       stok2: stok2,
+      stok: stok1 + stok2,
       id_satuan: id_satuan,
     });
 
@@ -237,14 +237,14 @@ module.exports = {
       id,
       {
         nama_barang: nama_barang,
-        stok: stok,
         harga_jual: harga_jual,
         harga_beli: harga_beli,
-        id_kategori: id_kategori,
         id_showroom1: id_showroom1,
         stok1: stok1,
         id_showroom2: id_showroom2,
         stok2: stok2,
+        stok: stok1 + stok2,
+        id_kategori: id_kategori,
         id_satuan: id_satuan,
       },
       function (error) {
