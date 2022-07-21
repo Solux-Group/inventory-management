@@ -90,18 +90,6 @@ const TambahBarangKeluar = () => {
     const name = e.target.name;
     var value = e.target.value;
 
-    if(formData.id_showroom1 === undefined || formData.id_showroom1 === ""){
-      setFormData.id_showroom = formData.id_showroom2
-    } else{
-      setFormData.id_showroom = formData.id_showroom1
-    }
-
-    if(formData.stok1 === undefined || formData.stok1 === ""){
-      setFormData.stok = formData.stok2
-    } else{
-      setFormData.stok = formData.stok1
-    }
-
     // only number
     if (name === "kuantitas") {
       value = value.replace(/\D/g, "");
@@ -116,15 +104,22 @@ const TambahBarangKeluar = () => {
       setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
     } else {
       if (name === "kode_barang") {
-        const { stok, harga_jual } = dataBarang.find(
+        const { id_showroom1, stok1, id_showroom2, stok2, harga_jual } = dataBarang.find(
           (barang) => barang.kode_barang === value
         );
         setFormData((state) => ({
           ...state,
           [name]: value,
-          stok: stok,
+          stok: formData.id_showroom === id_showroom1 ? stok1 : formData.id_showroom === id_showroom2 ? stok2 : 991,
           harga_jual: harga_jual,
         }));
+      } else {
+          if (name === "id_showroom") {
+            setFormData((state) => ({
+              ...state,
+              id_showroom: value,
+            }));
+          }
       }
       setFormDataError((state) => ({ ...state, [name]: false }));
     }
