@@ -315,12 +315,13 @@ const EditBarang = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Showroom 1 <span className="text-red-400">*</span>
+                Showroom 1
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 value={formData.id_showroom1}
                 name="id_showroom1"
+                disabled
                 //onChange={handleChange}
                 >
                 <option value="" disabled>
@@ -349,7 +350,7 @@ const EditBarang = (props) => {
             </div>
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stoque 1`}  <span className="text-red-400">*</span>
+                {`Stoque 1`} 
               </div>
               <input
                 type="text"
@@ -357,6 +358,7 @@ const EditBarang = (props) => {
                 placeholder="Stoque"
                 name="stok1"
                 value={formData.stok1}
+                disabled
                 //onChange={handleChange}
               />
               <div
@@ -369,7 +371,7 @@ const EditBarang = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Showroom 2 <span className="text-red-400">*</span>
+                Showroom 2
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
@@ -398,7 +400,7 @@ const EditBarang = (props) => {
             </div>
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
                 <div className="col-span-full md:col-span-4">
-                  {`Stoque 2`}  <span className="text-red-400">*</span>
+                  {`Stoque 2`} 
                 </div>
                 <input
                 type="text"
@@ -419,9 +421,9 @@ const EditBarang = (props) => {
 
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
                 <div className="col-span-full md:col-span-4">
-                  {`Stoque Total`}  <span className="text-red-400">*</span>
+                  {`Stoque Total`} 
                 </div>
-                {formData.stok = Number(formData.stok1) + Number(formData.stok2)}
+                {formData.stok}
                 <div
                   className={`${
                     formDataError.stok ? "" : "hidden"
