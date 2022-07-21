@@ -103,6 +103,19 @@ const TambahBarangKeluar = () => {
     if (value === undefined || value === "") {
       setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
     } else {
+      if (name === "id_showroom") {
+        setFormData((state) => ({
+          ...state,
+          [name]: value,
+        }));
+      }
+      setFormDataError((state) => ({ ...state, [name]: false }));
+    }
+    
+    setFormData((state) => ({ ...state, [name]: value }));
+    if (value === undefined || value === "") {
+      setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+    } else {
       if (name === "kode_barang") {
         const { id_showroom1, stok1, id_showroom2, stok2, harga_jual } = dataBarang.find(
           (barang) => barang.kode_barang === value
@@ -110,20 +123,13 @@ const TambahBarangKeluar = () => {
         setFormData((state) => ({
           ...state,
           [name]: value,
-          stok: formData.id_showroom === id_showroom1 ? stok1 : formData.id_showroom === id_showroom2 ? stok2 : 991,
+          stok: formData.id_showroom === id_showroom1 ? stok1 : formData.id_showroom === id_showroom2 ? stok2 : 911,
           harga_jual: harga_jual,
         }));
-      } else {
-          if (name === "id_showroom") {
-            setFormData((state) => ({
-              ...state,
-              id_showroom: value,
-            }));
-          }
       }
       setFormDataError((state) => ({ ...state, [name]: false }));
     }
-  
+
   };
 
   const handleSubmit = async (e) => {
