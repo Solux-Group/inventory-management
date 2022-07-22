@@ -245,6 +245,10 @@ const TambahBarangKeluar = () => {
             <div className={"grid grid-cols-12 items-center gap-x-4 gap-y-1"}>
               <div className="col-span-full md:col-span-4">
                 Showroom <span className="text-red-400">*</span>
+                <div>{formData.id_showroom}</div>
+                <div>{formData.stok}</div>
+                <div>{dataBarang.id_showroom1}</div>
+                <div>{dataBarang.stok2}</div>
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
