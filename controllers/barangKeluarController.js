@@ -147,7 +147,7 @@ module.exports = {
     barangKeluarModel
       .find(filter)
       .select(
-        "no_transaksi kode_barang id_showroom harga_jual kuantitas username created_at"
+        "no_transaksi kode_barang id_showroom1 stok1 id_showroom2 stok2 id_showroom harga_jual kuantitas username created_at"
       )
       .skip((page - 1) * rows)
       .limit(rows)
@@ -159,6 +159,24 @@ module.exports = {
           path: "id_satuan",
           model: "satuan",
           select: "nama_satuan",
+        },
+      })
+      .populate({
+        path: "barang_keluar",
+        select: "nama_barang id_showroom1",
+        populate: {
+          path: "id_showroom1",
+          model: "showroom",
+          select: "nama_showroom",
+        },
+      })
+      .populate({
+        path: "barang_keluar",
+        select: "nama_barang id_showroom2",
+        populate: {
+          path: "id_showroom2",
+          model: "showroom",
+          select: "nama_showroom",
         },
       })
       .populate("id_showroom")
