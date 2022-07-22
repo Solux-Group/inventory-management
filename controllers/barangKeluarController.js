@@ -231,10 +231,7 @@ module.exports = {
     try {
       await barangModel.findOneAndUpdate(
         { kode_barang: kode_barang },
-        { id_showroom1: id_showroom1 },
-        { $inc: { stok1: -kuantitas } },
-        { id_showroom2: id_showroom2 },
-        { $inc: { stok2: -kuantitas } },
+        { $inc: { stok: -kuantitas } }
       );
 
       const newBarangKeluar = new barangKeluarModel({
