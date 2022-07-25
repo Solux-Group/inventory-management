@@ -90,18 +90,6 @@ const TambahBarangKeluar = () => {
     const name = e.target.name;
     var value = e.target.value;
 
-    if(formData.id_showroom1 === undefined || formData.id_showroom1 === ""){
-      setFormData.id_showroom = formData.id_showroom2
-    } else{
-      setFormData.id_showroom = formData.id_showroom1
-    }
-
-    if(formData.stok1 === undefined || formData.stok1 === ""){
-      setFormData.stok = formData.stok2
-    } else{
-      setFormData.stok = formData.stok1
-    }
-
     // only number
     if (name === "kuantitas") {
       value = value.replace(/\D/g, "");
@@ -116,19 +104,20 @@ const TambahBarangKeluar = () => {
       setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
     } else {
       if (name === "kode_barang") {
-        const { stok, harga_jual } = dataBarang.find(
+        const { stok1, stok2, harga_jual } = dataBarang.find(
           (barang) => barang.kode_barang === value
         );
         setFormData((state) => ({
           ...state,
           [name]: value,
-          stok: stok,
+          stok: formData.id_showroom === "62ceeff20fe57200df0243a5" ? stok1 : formData.id_showroom === "62cfd0a4f824a84be4da0065" ? stok2 : "",
           harga_jual: harga_jual,
         }));
-      }
+
       setFormDataError((state) => ({ ...state, [name]: false }));
     }
-  
+  }
+
   };
 
   const handleSubmit = async (e) => {
@@ -219,7 +208,38 @@ const TambahBarangKeluar = () => {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col justify-center space-y-4">
-            <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
+
+          <div className={"grid grid-cols-12 items-center gap-x-4 gap-y-1"}>
+              <div className="col-span-full md:col-span-4">
+                Showroom <span className="text-red-400">*</span>
+              </div>
+              <select
+                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                value={formData.id_showroom}
+                name="id_showroom"
+                onChange={handleChange}>
+                <option value="" disabled>
+                  -- Choix de Showroom --
+                </option>
+                {dataShowroom.map((value, index) => {
+                  return (
+                    <option value={value._id} key={index}>
+                      {value.nama_showroom}
+                    </option>
+                  );
+                })}
+              </select>
+              <div
+                className={`${
+                  formDataError.id_showroom ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`showroom ${formDataError.id_showroom}`}
+              </div>
+            </div>
+            
+            <div className={`${
+              formData.id_showroom ? "" : "hidden"
+            } grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
               Marchandises sortantes <span className="text-red-400">*</span>
               </div>
@@ -247,38 +267,9 @@ const TambahBarangKeluar = () => {
               </div>
             </div>
 
-            <div className={"grid grid-cols-12 items-center gap-x-4 gap-y-1"}>
-              <div className="col-span-full md:col-span-4">
-                Showroom <span className="text-red-400">*</span>
-              </div>
-              <select
-                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                value={formData.id_showroom}
-                name="id_showroom"
-                onChange={handleChange}>
-                <option value="" disabled>
-                  -- Choix de Showroom --
-                </option>
-                {dataShowroom.map((value, index) => {
-                  return (
-                    <option value={value._id} key={index}>
-                      {value.nama_showroom}
-                    </option>
-                  );
-                })}
-              </select>
-              <div
-                className={`${
-                  formDataError.id_showroom ? "" : "hidden"
-                } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom}`}
-              </div>
-            </div>
-
-
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Stock disponible <span className="text-red-400">*</span>
+                Stock disponible
               </div>
               <input
                 type="text"
