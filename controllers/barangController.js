@@ -41,6 +41,7 @@ module.exports = {
       .limit(rows)
       .sort([[field, direction]])
       .populate("id_kategori")
+      .populate("stok")
       .populate("id_showroom1")
       .populate("stok1")
       .populate("id_showroom2")
@@ -160,7 +161,7 @@ module.exports = {
       stok1: stok1,
       id_showroom2: id_showroom2,
       stok2: stok2,
-      stok: stok1 + stok2,
+      stok: stok,
       id_satuan: id_satuan,
     });
 
