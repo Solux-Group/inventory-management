@@ -7,7 +7,7 @@ const barangMasukSchema = new mongoose.Schema(
       type: String,
       unique: true,
       default: () => {
-        return `TBM-${moment().format("YYYYMMDDHHmmss")}`;
+        return `SLX-${moment().format("YYYYMMDDHHmmss")}`;
       },
     },
     kode_barang: {
