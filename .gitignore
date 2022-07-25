@@ -13,6 +13,7 @@
 
 # API endpoint
 /src/config/api.js
+.env
 
 # misc
 .DS_Store
