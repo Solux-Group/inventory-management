@@ -243,7 +243,7 @@ module.exports = {
         stok1: stok1,
         id_showroom2: id_showroom2,
         stok2: stok2,
-        stok: stok1 + stok2,
+        stok: stok,
         id_kategori: id_kategori,
         id_satuan: id_satuan,
       },
