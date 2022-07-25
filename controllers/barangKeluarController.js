@@ -232,7 +232,7 @@ module.exports = {
       await barangModel.findOneAndUpdate(
         { kode_barang: kode_barang },
         { $inc: id_showroom === "62cfd0a4f824a84be4da0065" ? { stok1: -kuantitas } : id_showroom === "62ceeff20fe57200df0243a5" ? { stok2: -kuantitas } : ""},
-        { $inc: { stok: (Number(stok1) + Number(stok2)) } }
+        { stok: (Number(stok1) + Number(stok2)) },
       );
 
       const newBarangKeluar = new barangKeluarModel({
