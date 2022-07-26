@@ -168,7 +168,7 @@ const TambahBarangTransfert = () => {
   return (
     <div>
       <Helmet>
-        <title>Ajouter un article | INVENTORY</title>
+        <title>Transfèrer un article | INVENTORY</title>
       </Helmet>
       {showLoading ? (
         <div className="fixed bg-transparent w-full h-full z-30">
@@ -206,7 +206,7 @@ const TambahBarangTransfert = () => {
 
       <Card className="font-montserrat w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2 mx-auto">
         <div className="font-montserrat font-bold text-lg text-gray-500 mb-6">
-          Ajouter un article
+          Transfèrer un article
         </div>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col justify-center space-y-4">

@@ -33,7 +33,7 @@ const DataBarangTransfert = () => {
     { label: "No de Transfert", field: "no_transaksi" },
     { label: "Nom des marchandises", field: "nama_barang", disabled: true },
     { label: "Showroom de depart", field: "nama_showroom_up", disabled: true },
-    { label: "Showroom d'arrivée", field: "nama_showroom_up_up", disabled: true },
+    { label: "Showroom d'arrivée", field: "nama_showroom_down", disabled: true },
     { label: "Quantité", field: "kuantitas" },
     { label: "Prix ​unitaire", field: "harga_jual", disabled: true },
     { label: "Prix ​​total", field: "total_harga", disabled: true },
@@ -304,21 +304,21 @@ const DataBarangTransfert = () => {
 
       <Card className="font-montserrat">
         <div className="font-bold text-gray-500 text-xl mb-6">
-          Données de sortie d'article
+          Données de transfert d'article
         </div>
         <button
           className="bg-indigo-500 hover:bg-indigo-400 text-indigo-100 rounded focus:ring focus:ring-indigo-100 focus:outline-none px-4 py-1.5 mr-2 mb-4"
           onClick={() => {
             history.push("/barang_transfert/tambah");
           }}>
-          Ajouter un article
+          Transfèrer un article
         </button>
 
         <CSVLink
           className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded focus:ring focus:ring-indigo-100 focus:outline-none px-4 py-1.5 ml-2"
           headers={headersCSV}
           data={dataCSV}
-          filename="Solux_Données_de_Sortie.csv"
+          filename="Solux_Données_de_Transfert.csv"
           target="_blank">
           <FontAwesomeIcon icon={faFileAlt} className="mr-2" />
           Exporter
