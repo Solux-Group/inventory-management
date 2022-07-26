@@ -89,6 +89,11 @@ const Sidebar = ({ show, onShown = () => {} }) => {
           href: "/barang_keluar",
         },
         {
+          name: "Transfert de Marchandises",
+          icon: <FontAwesomeIcon icon={faBoxOpen} />,
+          href: "/barang_transfert",
+        },
+        {
           name: "Signaler",
           icon: <FontAwesomeIcon icon={faFileArchive} />,
           href: "/laporan",
