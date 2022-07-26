@@ -50,7 +50,7 @@ const DataBarangTransfert = () => {
     { label: "Prix unitaire", key: "harga_jual" },
     { label: "Prix ​​total", key: "total_harga" },
     { label: "Utilisateur", key: "username" },
-    { label: "Date de sortie", key: "created_at" },
+    { label: "Date de transfert", key: "created_at" },
   ];
   const [dataCSV, setDataCSV] = useState([]);
   const [sortBy, setSortBy] = useState({
