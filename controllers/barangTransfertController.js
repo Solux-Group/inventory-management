@@ -109,7 +109,7 @@ module.exports = {
     barangTransfertModel
       .find(filter)
       .select(
-        "no_transaksi kode_barang id_showroom harga_jual kuantitas username created_at"
+        "no_transaksi kode_barang id_showroom_up id_showroom_down harga_jual kuantitas username created_at"
       )
       .sort([["created_at", -1]])
       .populate({
@@ -121,7 +121,8 @@ module.exports = {
           select: "nama_satuan",
         },
       })
-      .populate("id_showroom")
+      .populate("id_showroom_up")
+      .populate("id_showroom_down")
       .populate("user_input", "nama")
       .exec(function (error, data) {
         if (error) {
@@ -147,7 +148,7 @@ module.exports = {
     barangTransfertModel
       .find(filter)
       .select(
-        "no_transaksi kode_barang id_showroom harga_jual kuantitas username created_at"
+        "no_transaksi kode_barang id_showroom_up id_showroom_down harga_jual kuantitas username created_at"
       )
       .skip((page - 1) * rows)
       .limit(rows)
@@ -161,7 +162,8 @@ module.exports = {
           select: "nama_satuan",
         },
       })
-      .populate("id_showroom")
+      .populate("id_showroom_up")
+      .populate("id_showroom_down")
       .populate("user_input", "nama")
       .exec(function (error, data) {
         if (error) {
@@ -197,12 +199,14 @@ module.exports = {
       });
   },
   create: async (req, res, next) => {
-    const { kode_barang, id_showroom, kuantitas, harga_jual, username } = req.body;
+    const { kode_barang, id_showroom_up, id_showroom_down, kuantitas, harga_jual, username } = req.body;
     var isError = false;
 
     if (kode_barang === undefined || kode_barang === "") {
       isError = true;
-    } else if (id_showroom === undefined || id_showroom === "") {
+    } else if (id_showroom_up === undefined || id_showroom_up === "") {
+      isError = true;
+    } else if (id_showroom_down === undefined || id_showroom_down === "") {
       isError = true;
     } else if (
       kuantitas === undefined ||
@@ -237,7 +241,8 @@ module.exports = {
 
       const newBarangTransfert = new barangTransfertModel({
         kode_barang: kode_barang,
-        id_showroom: id_showroom,
+        id_showroom_up: id_showroom_up,
+        id_showroom_down: id_showroom_down,
         kuantitas: kuantitas,
         harga_jual: harga_jual,
         username: username,

@@ -7,7 +7,7 @@ const barangTransfertSchema = new mongoose.Schema(
       type: String,
       unique: true,
       default: () => {
-        return `SLX-${moment().format("YYYYMMDDHHmmss")}`;
+        return `TRANS-${moment().format("YYYYMMDDHHmmss")}`;
       },
     },
     kode_barang: {
