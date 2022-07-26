@@ -148,7 +148,7 @@ module.exports = {
     barangTransfertModel
       .find(filter)
       .select(
-        "no_transaksi kode_barang id_showroom_up id_showroom_down harga_jual kuantitas username created_at"
+        "no_transaksi kode_barang harga_jual kuantitas id_showroom_up id_showroom_down username created_at"
       )
       .skip((page - 1) * rows)
       .limit(rows)
