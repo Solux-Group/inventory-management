@@ -30,22 +30,24 @@ const DataBarangTransfert = () => {
   const [dataBarangTransfert, setDataBarangTransfert] = useState(null);
   const columns = [
     { label: "No", field: "created_at", disabled: true },
-    { label: "No Transaction", field: "no_transaksi" },
+    { label: "No de Transfert", field: "no_transaksi" },
     { label: "Nom des marchandises", field: "nama_barang", disabled: true },
-    { label: "Showroom", field: "nama_showroom", disabled: true },
+    { label: "Showroom de depart", field: "nama_showroom_up", disabled: true },
+    { label: "Showroom d'arrivée", field: "nama_showroom_down", disabled: true },
     { label: "Quantité", field: "kuantitas" },
-    { label: "Prix ​​de vente", field: "harga_jual", disabled: true },
+    { label: "Prix ​unitaire", field: "harga_jual", disabled: true },
     { label: "Prix ​​total", field: "total_harga", disabled: true },
     { label: "Utilisateur", field: "username", disabled: true },
-    { label: "Date de sortie", field: "created_at" },
+    { label: "Date de transfert", field: "created_at" },
     { label: "Action", field: "aksi", disabled: true },
   ];
   const headersCSV = [
     { label: "No Transaction", key: "no_transaksi" },
     { label: "Nom des marchandises", key: "nama_barang" },
-    { label: "Showroom", key: "nama_showroom" },
+    { label: "Showroom de depart", key: "nama_showroom_up" },
+    { label: "Showroom d'arrivée", key: "nama_showroom_down" },
     { label: "Quantité", key: "kuantitas" },
-    { label: "Prix ​​de vente", key: "harga_jual" },
+    { label: "Prix unitaire", key: "harga_jual" },
     { label: "Prix ​​total", key: "total_harga" },
     { label: "Utilisateur", key: "username" },
     { label: "Date de sortie", key: "created_at" },
@@ -80,7 +82,7 @@ const DataBarangTransfert = () => {
     setShowLoading(true);
 
     await api
-      .get("/barang_Transfert", {
+      .get("/barang_transfert", {
         params: {
           q: dataTable.q,
           page: dataTable.page,
@@ -99,7 +101,8 @@ const DataBarangTransfert = () => {
             data.push({
               no_transaksi: value.no_transaksi,
               nama_barang: value.barang_Transfert.nama_barang,
-              nama_showroom: value.id_showroom.nama_showroom,
+              nama_showroom_up: value.id_showroom.nama_showroom_up,
+              nama_showroom_down: value.id_showroom.nama_showroom_down,
               kuantitas: value.kuantitas,
               harga_jual: value.harga_jual,
               total_harga: value.harga_jual * value.kuantitas,
@@ -139,7 +142,7 @@ const DataBarangTransfert = () => {
     setShowLoading(true);
 
     await api
-      .delete(`/barang_Transfert/${formDataDeleteBarangTransfert.no_transaksi}`, {
+      .delete(`/barang_transfert/${formDataDeleteBarangTransfert.no_transaksi}`, {
         headers: {
           "x-access-token": localStorage.getItem("token"),
         },

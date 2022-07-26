@@ -11,14 +11,16 @@ import Loading from "../../components/elements/Loading";
 const TambahBarangTransfert = () => {
   const [formData, setFormData] = useState({
     kode_barang: "",
-    id_showroom: "",
+    id_showroom_up: "",
+    id_showroom_down: "",
     kuantitas: "",
     harga_jual: 0,
     username: localStorage.getItem("username"),
   });
   const [formDataError, setFormDataError] = useState({
     kode_barang: false,
-    id_showroom: false,
+    id_showroom_up: false,
+    id_showroom_down: false,
     kuantitas: false,
     harga_jual: false,
   });
@@ -110,7 +112,7 @@ const TambahBarangTransfert = () => {
         setFormData((state) => ({
           ...state,
           [name]: value,
-          stok: formData.id_showroom === "62ceeff20fe57200df0243a5" ? stok1 : formData.id_showroom === "62cfd0a4f824a84be4da0065" ? stok2 : "",
+          stok: formData.id_showroom_up === "62ceeff20fe57200df0243a5" ? stok1 : formData.id_showroom_down === "62cfd0a4f824a84be4da0065" ? stok2 : "",
           harga_jual: harga_jual,
         }));
 
@@ -130,7 +132,7 @@ const TambahBarangTransfert = () => {
     setShowLoading(true);
 
     await api
-      .post("/barang_Transfert", formData, {
+      .post("/barang_transfert", formData, {
         headers: {
           "x-access-token": localStorage.getItem("token"),
         },
@@ -211,12 +213,12 @@ const TambahBarangTransfert = () => {
 
           <div className={"grid grid-cols-12 items-center gap-x-4 gap-y-1"}>
               <div className="col-span-full md:col-span-4">
-                Showroom <span className="text-red-400">*</span>
+                Showroom de départ <span className="text-red-400">*</span>
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                value={formData.id_showroom}
-                name="id_showroom"
+                value={formData.id_showroom_up}
+                name="id_showroom_up"
                 onChange={handleChange}>
                 <option value="" disabled>
                   -- Choix de Showroom --
@@ -231,14 +233,42 @@ const TambahBarangTransfert = () => {
               </select>
               <div
                 className={`${
-                  formDataError.id_showroom ? "" : "hidden"
+                  formDataError.id_showroom_up ? "" : "hidden"
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom}`}
+                {`showroom ${formDataError.id_showroom_up}`}
+              </div>
+            </div>
+
+            <div className={"grid grid-cols-12 items-center gap-x-4 gap-y-1"}>
+              <div className="col-span-full md:col-span-4">
+                Showroom d'arrivée <span className="text-red-400">*</span>
+              </div>
+              <select
+                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                value={formData.id_showroom_down}
+                name="id_showroom_down"
+                onChange={handleChange}>
+                <option value="" disabled>
+                  -- Choix de Showroom --
+                </option>
+                {dataShowroom.map((value, index) => {
+                  return (
+                    <option value={value._id} key={index}>
+                      {value.nama_showroom}
+                    </option>
+                  );
+                })}
+              </select>
+              <div
+                className={`${
+                  formDataError.id_showroom_down ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`showroom ${formDataError.id_showroom_down}`}
               </div>
             </div>
             
             <div className={`${
-              formData.id_showroom ? "" : "hidden"
+              formData.id_showroom_up ? "" : "hidden"
             } grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
               Marchandises sortantes <span className="text-red-400">*</span>
