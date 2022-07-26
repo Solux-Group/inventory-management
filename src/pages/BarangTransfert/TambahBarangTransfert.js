@@ -112,7 +112,7 @@ const TambahBarangTransfert = () => {
         setFormData((state) => ({
           ...state,
           [name]: value,
-          stok: formData.id_showroom_up === "62ceeff20fe57200df0243a5" ? stok1 : formData.id_showroom_up === "62cfd0a4f824a84be4da0065" ? stok2 : "",
+          stok: formData.id_showroom_up === "62ceeff20fe57200df0243a5" && formData.id_showroom_up !== formData.id_showroom_down ? stok1 : formData.id_showroom_up === "62cfd0a4f824a84be4da0065" && formData.id_showroom_up !== formData.id_showroom_down ? stok2 : "",
           harga_jual: harga_jual,
         }));
 
