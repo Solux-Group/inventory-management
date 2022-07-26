@@ -10,14 +10,14 @@ import { useHistory } from "react-router";
 const TambahBarang = () => {
   const [formData, setFormData] = useState({
     nama_barang: "",
-    stok1: "",
-    stok2: "",
-    stok: "",
+    stok1: 0,
+    stok2: 0,
+    stok: 0,
     harga_jual: "",
     harga_beli: "",
     id_kategori: "",
-    id_showroom1: "",
-    id_showroom2: "",
+    id_showroom1: "62ceeff20fe57200df0243a5",
+    id_showroom2: "62cfd0a4f824a84be4da0065",
     id_satuan: "",
   });
   const [formDataError, setFormDataError] = useState({
@@ -237,16 +237,15 @@ const TambahBarang = () => {
             
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Showroom {formData.nama_showroom} <span className="text-red-400">*</span>
+                Showroom Dakar <span className="text-red-400">*</span>
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 value={formData.id_showroom1}
                 name="id_showroom1"
-                onChange={handleChange}>
-                <option value="" disabled>
-                  -- Choix de Showroom --
-                </option>
+                onChange={handleChange}
+                disabled
+                >
                 {datashowroom.map((value, index) => {
                   return (
                     <option value={value._id} key={index}>
@@ -262,16 +261,16 @@ const TambahBarang = () => {
                 {`showroom ${formDataError.id_showroom1}`}
               </div>
             </div>
-            <div className={`${formData.id_showroom1 ? "" : "hidden"} grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
+            <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stoque ${formData.nama_showroom}`}  <span className="text-red-400">*</span>
+                {`Stock Dakar`}  <span className="text-red-400">*</span>
               </div>
               <input
                 type="text"
                 className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                placeholder="Stoque"
+                placeholder="Stock"
                 name="stok1"
-                value={0 + formData.stok1}
+                value={formData.stok1}
                 onChange={handleChange}
               />
               <div
@@ -282,20 +281,17 @@ const TambahBarang = () => {
               </div>
             </div>
 
-            <div className={`${
-              formData.stok1 === "" || formData.stok1 === 0 ? "hidden" : ""
-            } grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
+            <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                Showroom {formData.nama_showroom} <span className="text-red-400">*</span>
+                Showroom St.Louis <span className="text-red-400">*</span>
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
                 value={formData.id_showroom2}
                 name="id_showroom2"
-                onChange={handleChange}>
-                <option value="" disabled>
-                  -- Choix de Showroom --
-                </option>
+                onChange={handleChange}
+                disabled
+                >
                 {datashowroom.map((value, index) => {
                   return (
                     <option value={value._id} key={index}>
@@ -313,14 +309,14 @@ const TambahBarang = () => {
             </div>
             <div className={`${formData.id_showroom2 ? "" : "hidden"} grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stoque ${formData.nama_showroom}`}  <span className="text-red-400">*</span>
+                {`Stock St.Louis`}  <span className="text-red-400">*</span>
               </div>
               <input
                 type="text"
                 className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                placeholder="Stoque"
+                placeholder="Stock"
                 name="stok2"
-                value={0 + formData.stok2}
+                value={formData.stok2}
                 onChange={handleChange}
               />
               <div
@@ -333,12 +329,12 @@ const TambahBarang = () => {
 
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stoque Total`}  <span className="text-red-400">*</span>
+                {`Stock Total`}  <span className="text-red-400">*</span>
               </div>
               <input
                 type="text"
                 className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                placeholder="Stoque"
+                placeholder="Stock"
                 name="stok"
                 value={formData.stok = formData.stok1 + formData.stok2}
                 disabled
