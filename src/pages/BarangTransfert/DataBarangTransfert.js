@@ -33,7 +33,7 @@ const DataBarangTransfert = () => {
     { label: "No de Transfert", field: "no_transaksi" },
     { label: "Nom des marchandises", field: "nama_barang", disabled: true },
     { label: "Showroom de depart", field: "nama_showroom_up", disabled: true },
-    { label: "Showroom d'arrivée", field: "nama_showroom_down", disabled: true },
+    { label: "Showroom d'arrivée", field: "nama_showroom_up_up", disabled: true },
     { label: "Quantité", field: "kuantitas" },
     { label: "Prix ​unitaire", field: "harga_jual", disabled: true },
     { label: "Prix ​​total", field: "total_harga", disabled: true },
@@ -100,9 +100,9 @@ const DataBarangTransfert = () => {
           response.data.data.forEach((value, index) => {
             data.push({
               no_transaksi: value.no_transaksi,
-              nama_barang: value.barang_Transfert.nama_barang,
-              nama_showroom_up: value.id_showroom.nama_showroom_up,
-              nama_showroom_down: value.id_showroom.nama_showroom_down,
+              nama_barang: value.barang_transfert.nama_barang,
+              nama_showroom_up: value.id_showroom_up.nama_showroom,
+              nama_showroom_down: value.id_showroom_down.nama_showroom,
               kuantitas: value.kuantitas,
               harga_jual: value.harga_jual,
               total_harga: value.harga_jual * value.kuantitas,
@@ -183,17 +183,20 @@ const DataBarangTransfert = () => {
         <Tr key={index}>
           <td className="border text-center">{no + (index + 1)}</td>
           <td className="border text-center font-lato">{value.no_transaksi}</td>
-          <td className="border">{value.barang_Transfert.nama_barang}</td>
+          <td className="border">{value.barang_transfert.nama_barang}</td>
           <td className="border">
-            {value.id_showroom ? value.id_showroom.nama_showroom : "-"}
+            {value.id_showroom_up ? value.id_showroom_up.nama_showroom : "-"}
+          </td>
+          <td className="border">
+            {value.id_showroom_down ? value.id_showroom_down.nama_showroom : "-"}
           </td>
           <td className="border text-center">{value.kuantitas}</td>
           <td className="border text-right">{`CFA ${value.harga_jual.toLocaleString(
-            { style: "currency", currency: "IDR" }
-          )}/${value.barang_Transfert.id_satuan.nama_satuan}`}</td>
+            { style: "currency", currency: "CFA" }
+          )}/${value.barang_transfert.id_satuan.nama_satuan}`}</td>
           <td className="border text-right">{`CFA ${(
             value.harga_jual * value.kuantitas
-          ).toLocaleString({ style: "currency", currency: "IDR" })}`}</td>
+          ).toLocaleString({ style: "currency", currency: "CFA" })}`}</td>
           <td className="border text-center">{value.user_input.nama}</td>
           <td className="border text-center">
             {moment(value.created_at).format("YYYY-MM-DD")}
@@ -306,7 +309,7 @@ const DataBarangTransfert = () => {
         <button
           className="bg-indigo-500 hover:bg-indigo-400 text-indigo-100 rounded focus:ring focus:ring-indigo-100 focus:outline-none px-4 py-1.5 mr-2 mb-4"
           onClick={() => {
-            history.push("/barang_Transfert/tambah");
+            history.push("/barang_transfert/tambah");
           }}>
           Ajouter un article
         </button>

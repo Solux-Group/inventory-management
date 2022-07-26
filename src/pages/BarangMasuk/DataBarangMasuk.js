@@ -200,13 +200,13 @@ const DataBarangMasuk = () => {
           </td>
           <td className="border text-center">{value.kuantitas}</td>
           <td className="border text-right">{`CFA ${value.harga_beli.toLocaleString(
-            { style: "currency", currency: "IDR" }
+            { style: "currency", currency: "CFA" }
           )}/${
             value.barang_masuk ? value.barang_masuk.id_satuan.nama_satuan : "-"
           }`}</td>
           <td className="border text-right">{`CFA ${(
             value.harga_beli * value.kuantitas
-          ).toLocaleString({ style: "currency", currency: "IDR" })}`}</td>
+          ).toLocaleString({ style: "currency", currency: "CFA" })}`}</td>
           <td className="border text-center">
             {value.user_input ? value.user_input.nama : "-"}
           </td>

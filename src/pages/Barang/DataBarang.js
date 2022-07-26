@@ -186,10 +186,10 @@ const DataBarang = () => {
           <td className="border">{value.nama_barang}</td>
           <td className="border text-center">{value.stok}</td>
           <td className="border text-right whitespace-nowrap">{`CFA ${value.harga_jual.toLocaleString(
-            { style: "currency", currency: "IDR" }
+            { style: "currency", currency: "CFA" }
           )}`}</td>
           <td className="border text-right whitespace-nowrap">{`CFA ${value.harga_beli.toLocaleString(
-            { style: "currency", currency: "IDR" }
+            { style: "currency", currency: "CFA" }
           )}`}</td>
           <td className="border text-center">
             {value.id_kategori ? value.id_kategori.nama_kategori : "-"}

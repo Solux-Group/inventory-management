@@ -112,7 +112,7 @@ const TambahBarangTransfert = () => {
         setFormData((state) => ({
           ...state,
           [name]: value,
-          stok: formData.id_showroom_up === "62ceeff20fe57200df0243a5" ? stok1 : formData.id_showroom_down === "62cfd0a4f824a84be4da0065" ? stok2 : "",
+          stok: formData.id_showroom_up === "62ceeff20fe57200df0243a5" ? stok1 : formData.id_showroom_up === "62cfd0a4f824a84be4da0065" ? stok2 : "",
           harga_jual: harga_jual,
         }));
 
@@ -332,7 +332,7 @@ const TambahBarangTransfert = () => {
             </div>
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Prix ​​de vente <span className="text-red-400">*</span>
+                Prix unitaire <span className="text-red-400">*</span>
               </div>
               <div className="flex col-span-full md:col-span-8 border border-gray-300 rounded-md focus-within:ring focus-within:ring-indigo-200">
                 <div className="bg-gray-100  px-3 py-2">CFA</div>
