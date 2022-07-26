@@ -235,7 +235,7 @@ module.exports = {
     try {
       await barangModel.findOneAndUpdate(
         { kode_barang: kode_barang },
-        { $inc: id_showroom === "62cfd0a4f824a84be4da0065" ? { stok1: -kuantitas } : id_showroom === "62ceeff20fe57200df0243a5" ? { stok2: -kuantitas } : 0},
+        { $inc: id_showroom_up === "62cfd0a4f824a84be4da0065" ? { stok1: -kuantitas } : id_showroom_up === "62ceeff20fe57200df0243a5" ? { stok2: -kuantitas } : 0},
         { $inc: { stok: -kuantitas } },
       );
 

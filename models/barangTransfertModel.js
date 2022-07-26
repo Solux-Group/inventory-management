@@ -18,7 +18,11 @@ const barangTransfertSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    id_showroom: {
+    id_showroom_up: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "showroom",
+    },
+    id_showroom_down: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "showroom",
     },
