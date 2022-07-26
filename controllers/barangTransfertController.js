@@ -162,8 +162,26 @@ module.exports = {
           select: "nama_satuan",
         },
       })
-      .populate("id_showroom_up")
-      .populate("id_showroom_down")
+      .populate({
+        path: "barang_transfert",
+        select: "nama_showroom_up",
+        populate: {
+          path: "id_showroom_up",
+          model: "showroom",
+          select: "nama_showroom",
+        },
+      })
+      .populate({
+        path: "barang_transfert",
+        select: "nama_showroom_down",
+        populate: {
+          path: "id_showroom_down",
+          model: "showroom",
+          select: "nama_showroom",
+        },
+      })
+      // .populate("id_showroom_up")
+      // .populate("id_showroom_down")
       .populate("user_input", "nama")
       .exec(function (error, data) {
         if (error) {
