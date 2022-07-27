@@ -1,13 +1,13 @@
 {
   "main.css": "/inventory-management/static/css/main.4538d946.chunk.css",
-  "main.js": "/inventory-management/static/js/main.d5979dee.chunk.js",
-  "main.js.map": "/inventory-management/static/js/main.d5979dee.chunk.js.map",
+  "main.js": "/inventory-management/static/js/main.0989e531.chunk.js",
+  "main.js.map": "/inventory-management/static/js/main.0989e531.chunk.js.map",
   "runtime~main.js": "/inventory-management/static/js/runtime~main.31ad1e1e.js",
   "runtime~main.js.map": "/inventory-management/static/js/runtime~main.31ad1e1e.js.map",
   "static/js/2.c4810be2.chunk.js": "/inventory-management/static/js/2.c4810be2.chunk.js",
   "static/js/2.c4810be2.chunk.js.map": "/inventory-management/static/js/2.c4810be2.chunk.js.map",
   "index.html": "/inventory-management/index.html",
-  "precache-manifest.d63bc7807a0846eba933e7ed6c5b3d8f.js": "/inventory-management/precache-manifest.d63bc7807a0846eba933e7ed6c5b3d8f.js",
+  "precache-manifest.a1e1586f940dc7651726c4950352f198.js": "/inventory-management/precache-manifest.a1e1586f940dc7651726c4950352f198.js",
   "service-worker.js": "/inventory-management/service-worker.js",
   "static/css/main.4538d946.chunk.css.map": "/inventory-management/static/css/main.4538d946.chunk.css.map"
 }
