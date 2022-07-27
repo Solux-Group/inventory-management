@@ -315,7 +315,7 @@ const EditBarang = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Showroom 1
+                Showroom Dakar
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
@@ -350,12 +350,12 @@ const EditBarang = (props) => {
             </div>
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stoque 1`} 
+                {`Stock Dakar`} 
               </div>
               <input
                 type="text"
                 className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                placeholder="Stoque"
+                placeholder="Stock"
                 name="stok1"
                 value={formData.stok1}
                 disabled
@@ -371,7 +371,7 @@ const EditBarang = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Showroom 2
+                Showroom St. Louis
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
@@ -400,12 +400,12 @@ const EditBarang = (props) => {
             </div>
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
                 <div className="col-span-full md:col-span-4">
-                  {`Stoque 2`} 
+                  {`Stock St. Louis`} 
                 </div>
                 <input
                 type="text"
                 className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                placeholder="Stoque"
+                placeholder="Stock"
                 name="stok2"
                 value={formData.stok2}
                 disabled
@@ -421,7 +421,7 @@ const EditBarang = (props) => {
 
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
                 <div className="col-span-full md:col-span-4">
-                  {`Stoque Total`} 
+                  {`Stock Total`} 
                 </div>
                 {formData.stok}
                 <div

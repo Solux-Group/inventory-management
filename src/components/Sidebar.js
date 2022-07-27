@@ -207,7 +207,7 @@ const Sidebar = ({ show, onShown = () => {} }) => {
           </button>
         </div>
         <div className="font-bold text-white text-xl text-center py-4">
-          Gestion de Stoque
+          Gestion de Stock
         </div>
         <div className="border-b w-4/5 mx-auto"></div>
 
