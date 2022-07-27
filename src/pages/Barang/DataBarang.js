@@ -43,7 +43,7 @@ const DataBarang = () => {
     { label: "No", field: "created_at" },
     { label: "Code de l'article", field: "kode_barang" },
     { label: "Nom des marchandises", field: "nama_barang" },
-    { label: "Stocker", field: "stok" },
+    { label: "Stock", field: "stok" },
     { label: "Prix ​​de vente", field: "harga_jual" },
     { label: "Prix ​​d'achat", field: "harga_beli" },
     { label: "Catégorie", field: "id_kategori" },
