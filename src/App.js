@@ -161,12 +161,26 @@ function App() {
           <PrivateRoute
             path="/barang_transfert"
             exact
-            component={DataBarangTransfert}
+            render={(props) => {
+              if (localStorage.getItem("role") !== "admin") {
+                return props.history.goBack();
+              } else {
+                return <DataBarangTransfert {...props} />;
+              }
+            }}
+            //component={DataBarangTransfert}
           />
           <PrivateRoute
             path="/barang_transfert/tambah"
             exact
-            component={TambahBarangTransfert}
+            render={(props) => {
+              if (localStorage.getItem("role") !== "admin") {
+                return props.history.goBack();
+              } else {
+                return <TambahBarangTransfert {...props} />;
+              }
+            }}
+            //component={TambahBarangTransfert}
           />
 
           <PrivateRoute path="/laporan" exact component={LaporanBarang} />
