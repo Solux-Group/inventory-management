@@ -32,7 +32,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(express.static(path.join(__dirname, "public")));
-app.use('/public', express.static('public'));
+app.use('/assets', express.static('assets'));
 
 // auth without middleware
 app.use("/", indexRouter);
