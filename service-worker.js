@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/inventory-management/precache-manifest.73ced13e49874a2a9799b5bdcdd3c71e.js"
+  "/inventory-management/precache-manifest.c8a3d8df3f313b61ea36d7fbeccfcb97.js"
 );
 
 workbox.clientsClaim();
