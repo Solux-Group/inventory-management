@@ -16,8 +16,8 @@ const TambahBarang = () => {
     harga_jual: "",
     harga_beli: "",
     id_kategori: "",
-    id_showroom1: "62ceeff20fe57200df0243a5",
-    id_showroom2: "62cfd0a4f824a84be4da0065",
+    id_showroom1: "62ceeff20fe57200df0243a5", // Solux Dakar
+    id_showroom2: "62cfd0a4f824a84be4da0065", // Solux St.Louis
     id_satuan: "",
   });
   const [formDataError, setFormDataError] = useState({
@@ -237,7 +237,7 @@ const TambahBarang = () => {
             
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Showroom Dakar <span className="text-red-400">*</span>
+                Showroom Dakar 
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
@@ -263,7 +263,7 @@ const TambahBarang = () => {
             </div>
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stock Dakar`}  <span className="text-red-400">*</span>
+                {`Stock Dakar`}  
               </div>
               <input
                 type="text"
@@ -283,7 +283,7 @@ const TambahBarang = () => {
 
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                Showroom St.Louis <span className="text-red-400">*</span>
+                Showroom St.Louis 
               </div>
               <select
                 className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
@@ -309,7 +309,7 @@ const TambahBarang = () => {
             </div>
             <div className={`${formData.id_showroom2 ? "" : "hidden"} grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stock St.Louis`}  <span className="text-red-400">*</span>
+                {`Stock St.Louis`}  
               </div>
               <input
                 type="text"
@@ -329,7 +329,7 @@ const TambahBarang = () => {
 
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
-                {`Stock Total`}  <span className="text-red-400">*</span>
+                {`Stock Total`} 
               </div>
               <input
                 type="text"
