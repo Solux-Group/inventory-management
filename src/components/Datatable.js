@@ -59,7 +59,7 @@ const Datatable = ({
           <input
             type="text"
             className="text-sm border rounded focus:ring focus:ring-indigo-100 focus:outline-none w-full md:w-auto px-2 py-1.5"
-            placeholder="Masukkan kata kunci..."
+            placeholder="Mots clefs du nom de l'article..."
             onChange={(e) => searchOnChange(e.target.value) }
           />
         </div>

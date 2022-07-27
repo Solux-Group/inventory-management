@@ -30,6 +30,9 @@ import TambahBarangMasuk from "./pages/BarangMasuk/TambahBarangMasuk";
 import DataBarangKeluar from "./pages/BarangKeluar/DataBarangKeluar";
 import TambahBarangKeluar from "./pages/BarangKeluar/TambahBarangKeluar";
 
+import DataBarangTransfert from "./pages/BarangTransfert/DataBarangTransfert";
+import TambahBarangTransfert from "./pages/BarangTransfert/TambahBarangTransfert";
+
 import EditPengguna from "./pages/Pengguna/EditPengguna";
 import TambahPengguna from "./pages/Pengguna/TambahPengguna";
 
@@ -153,6 +156,17 @@ function App() {
             path="/barang_keluar/tambah"
             exact
             component={TambahBarangKeluar}
+          />
+
+          <PrivateRoute
+            path="/barang_transfert"
+            exact
+            component={DataBarangTransfert}
+          />
+          <PrivateRoute
+            path="/barang_transfert/tambah"
+            exact
+            component={TambahBarangTransfert}
           />
 
           <PrivateRoute path="/laporan" exact component={LaporanBarang} />

@@ -186,11 +186,11 @@ const DataBarangKeluar = () => {
           </td>
           <td className="border text-center">{value.kuantitas}</td>
           <td className="border text-right">{`CFA ${value.harga_jual.toLocaleString(
-            { style: "currency", currency: "IDR" }
+            { style: "currency", currency: "CFA" }
           )}/${value.barang_keluar.id_satuan.nama_satuan}`}</td>
           <td className="border text-right">{`CFA ${(
             value.harga_jual * value.kuantitas
-          ).toLocaleString({ style: "currency", currency: "IDR" })}`}</td>
+          ).toLocaleString({ style: "currency", currency: "CFA" })}`}</td>
           <td className="border text-center">{value.user_input.nama}</td>
           <td className="border text-center">
             {moment(value.created_at).format("YYYY-MM-DD")}

@@ -5,14 +5,15 @@ import Card from "../../components/elements/Card";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "../../components/elements/Modal";
+import { Button, ButtonLight } from "../../components/elements/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
 import { Helmet } from "react-helmet";
 import Alert from "../../components/elements/Alert";
 import Loading from "../../components/elements/Loading";
 import Datatable from "../../components/Datatable";
 import moment from "moment";
+import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
 import { CSVLink } from "react-csv";
 
 const Tr = styled.tr`
@@ -24,32 +25,32 @@ const Tr = styled.tr`
   }
 `;
 
-const DataBarangMasuk = () => {
-  const initialStateFormDataDeleteBarangMasuk = { no_transaksi: "" };
-  const [dataBarangMasuk, setDataBarangMasuk] = useState(null);
+const DataBarangTransfert = () => {
+  const initialStateFormDataDeleteBarangTransfert = { no_transaksi: "" };
+  const [dataBarangTransfert, setDataBarangTransfert] = useState(null);
   const columns = [
     { label: "No", field: "created_at", disabled: true },
-    { label: "No Transaction", field: "no_transaksi" },
-    { label: "Fournisseurs", field: "nama_supplier", disabled: true },
+    { label: "No de Transfert", field: "no_transaksi" },
     { label: "Nom des marchandises", field: "nama_barang", disabled: true },
-    { label: "Showrooms", field: "nama_showroom", disabled: true },
+    { label: "Showroom de depart", field: "nama_showroom_up", disabled: true },
+    { label: "Showroom d'arrivée", field: "nama_showroom_down", disabled: true },
     { label: "Quantité", field: "kuantitas" },
-    { label: "Prix ​​d'achat", field: "harga_beli", disabled: true },
+    { label: "Prix ​unitaire", field: "harga_jual", disabled: true },
     { label: "Prix ​​total", field: "total_harga", disabled: true },
     { label: "Utilisateur", field: "username", disabled: true },
-    { label: "Date d'enregistrement", field: "created_at" },
+    { label: "Date de transfert", field: "created_at" },
     { label: "Action", field: "aksi", disabled: true },
   ];
   const headersCSV = [
     { label: "No Transaction", key: "no_transaksi" },
-    { label: "Fournisseurs", key: "supplier" },
     { label: "Nom des marchandises", key: "nama_barang" },
-    { label: "Showrooms", key: "showroom" },
+    { label: "Showroom de depart", key: "nama_showroom_up" },
+    { label: "Showroom d'arrivée", key: "nama_showroom_down" },
     { label: "Quantité", key: "kuantitas" },
-    { label: "Prix ​​d'achat", key: "harga_beli" },
+    { label: "Prix unitaire", key: "harga_jual" },
     { label: "Prix ​​total", key: "total_harga" },
     { label: "Utilisateur", key: "username" },
-    { label: "Date d'enregistrement", key: "created_at" },
+    { label: "Date de transfert", key: "created_at" },
   ];
   const [dataCSV, setDataCSV] = useState([]);
   const [sortBy, setSortBy] = useState({
@@ -65,24 +66,23 @@ const DataBarangMasuk = () => {
     totalPagesFiltered: 0,
     totalRowsFiltered: 0,
   });
-  const [showModalDeleteBarangMasuk, setShowModalDeleteBarangMasuk] =
-    useState(false);
+  const [showModalDeleteBarangTransfert, setShowModalDeleteBarangTransfert] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [alert, setAlert] = useState({
     message: "",
     error: false,
   });
-  const [formDataDeleteBarangMasuk, setFormDataDeleteBarangMasuk] = useState(
-    initialStateFormDataDeleteBarangMasuk
+  const [formDataDeleteBarangTransfert, setFormDataDeleteBarangTransfert] = useState(
+    initialStateFormDataDeleteBarangTransfert
   );
   const history = useHistory();
 
-  const fetchBarangMasuk = async () => {
+  const fetchBarangTransfert = async () => {
     setShowLoading(true);
 
     await api
-      .get("/barang_masuk", {
+      .get("/barang_transfert", {
         params: {
           q: dataTable.q,
           page: dataTable.page,
@@ -94,25 +94,19 @@ const DataBarangMasuk = () => {
         },
       })
       .then((response) => {
-        setDataBarangMasuk(response.data);
+        setDataBarangTransfert(response.data);
         setDataCSV(() => {
           const data = [];
           response.data.data.forEach((value, index) => {
             data.push({
               no_transaksi: value.no_transaksi,
-              supplier: value.id_supplier
-                ? value.id_supplier.nama_supplier
-                : null,
-              nama_barang: value.barang_masuk
-                ? value.barang_masuk.nama_barang
-                : null,
-              showroom: value.id_showroom
-              ? value.id_showroom.nama_showroom
-              : null,
+              nama_barang: value.barang_transfert.nama_barang,
+              nama_showroom_up: value.id_showroom_up.nama_showroom,
+              nama_showroom_down: value.id_showroom_down.nama_showroom,
               kuantitas: value.kuantitas,
-              harga_beli: value.harga_beli,
-              total_harga: value.harga_beli * value.kuantitas,
-              username: value.user_input ? value.user_input.nama : null,
+              harga_jual: value.harga_jual,
+              total_harga: value.harga_jual * value.kuantitas,
+              username: value.user_input.nama,
               created_at: moment(value.created_at).format("YYYY MM DD"),
             });
           });
@@ -144,21 +138,21 @@ const DataBarangMasuk = () => {
     setShowLoading(false);
   };
 
-  const handleSubmitDeleteBarangMasuk = async () => {
+  const handleSubmitDeleteBarangTransfert = async () => {
     setShowLoading(true);
 
     await api
-      .delete(`/barang_masuk/${formDataDeleteBarangMasuk.no_transaksi}`, {
+      .delete(`/barang_transfert/${formDataDeleteBarangTransfert.no_transaksi}`, {
         headers: {
           "x-access-token": localStorage.getItem("token"),
         },
       })
       .then((response) => {
-        fetchBarangMasuk();
+        fetchBarangTransfert();
         setAlert({ message: response.data.message, error: false });
         setShowAlert(true); // show alert
-        setShowModalDeleteBarangMasuk(false); // hide modal
-        setFormDataDeleteBarangMasuk(initialStateFormDataDeleteBarangMasuk); // reset form
+        setShowModalDeleteBarangTransfert(false); // hide modal
+        setFormDataDeleteBarangTransfert(initialStateFormDataDeleteBarangTransfert); // reset form
       })
       .catch((error) => {
         // Unauthorized
@@ -170,12 +164,12 @@ const DataBarangMasuk = () => {
         setAlert({ message: "Internal server error!", error: true });
         setShowAlert(true);
       });
-
+    
     setShowLoading(false);
   };
 
   const DataRows = () => {
-    if (!dataBarangMasuk || dataBarangMasuk.data.length === 0) {
+    if (!dataBarangTransfert || dataBarangTransfert.data.length === 0) {
       return (
         <tr className="text-center">
           <td colSpan={columns.length}>Données vides</td>
@@ -183,33 +177,27 @@ const DataBarangMasuk = () => {
       );
     }
 
-    return dataBarangMasuk.data.map((value, index) => {
+    return dataBarangTransfert.data.map((value, index) => {
       const no = (dataTable.page - 1) * dataTable.rowsPerPage;
       return (
         <Tr key={index}>
           <td className="border text-center">{no + (index + 1)}</td>
           <td className="border text-center font-lato">{value.no_transaksi}</td>
+          <td className="border">{value.barang_transfert.nama_barang}</td>
           <td className="border">
-            {value.id_supplier ? value.id_supplier.nama_supplier : "-"}
+            {value.id_showroom_up ? value.id_showroom_up.nama_showroom : "-"}
           </td>
           <td className="border">
-            {value.barang_masuk ? value.barang_masuk.nama_barang : "-"}
-          </td>
-          <td className="border">
-            {value.id_showroom ? value.id_showroom.nama_showroom : "-"}
+            {value.id_showroom_down ? value.id_showroom_down.nama_showroom : "-"}
           </td>
           <td className="border text-center">{value.kuantitas}</td>
-          <td className="border text-right">{`CFA ${value.harga_beli.toLocaleString(
+          <td className="border text-right">{`CFA ${value.harga_jual.toLocaleString(
             { style: "currency", currency: "CFA" }
-          )}/${
-            value.barang_masuk ? value.barang_masuk.id_satuan.nama_satuan : "-"
-          }`}</td>
+          )}/${value.barang_transfert.id_satuan.nama_satuan}`}</td>
           <td className="border text-right">{`CFA ${(
-            value.harga_beli * value.kuantitas
+            value.harga_jual * value.kuantitas
           ).toLocaleString({ style: "currency", currency: "CFA" })}`}</td>
-          <td className="border text-center">
-            {value.user_input ? value.user_input.nama : "-"}
-          </td>
+          <td className="border text-center">{value.user_input.nama}</td>
           <td className="border text-center">
             {moment(value.created_at).format("YYYY-MM-DD")}
           </td>
@@ -218,8 +206,8 @@ const DataBarangMasuk = () => {
               <button
                 className="border border-red-300 bg-red-50 hover:bg-red-200 text-red-600 rounded-full focus:ring focus:ring-red-100 focus:outline-none px-4 py-1.5"
                 onClick={() => {
-                  setShowModalDeleteBarangMasuk(true);
-                  setFormDataDeleteBarangMasuk({
+                  setShowModalDeleteBarangTransfert(true);
+                  setFormDataDeleteBarangTransfert({
                     no_transaksi: value.no_transaksi,
                   });
                 }}>
@@ -233,13 +221,13 @@ const DataBarangMasuk = () => {
   };
 
   useEffect(() => {
-    fetchBarangMasuk();
+    fetchBarangTransfert();
   }, [dataTable.q, dataTable.rowsPerPage, dataTable.page, sortBy]);
 
   return (
     <>
       <Helmet>
-        <title>Éléments de connexion | INVENTORY</title>
+        <title>Données de sortie d'article | INVENTORY</title>
       </Helmet>
       {showLoading ? (
         <div className="fixed bg-transparent w-full h-full z-30">
@@ -248,7 +236,7 @@ const DataBarangMasuk = () => {
             style={{ backgroundColor: "#00000097" }}>
             <Loading>
               <div className="font-montserrat text-gray-300 mt-2">
-                Loading...
+                Chargement...
               </div>
             </Loading>
           </div>
@@ -273,16 +261,16 @@ const DataBarangMasuk = () => {
       </Alert>
 
       <Modal
-        show={showModalDeleteBarangMasuk}
-        afterClose={() => setShowModalDeleteBarangMasuk(false)}>
+        show={showModalDeleteBarangTransfert}
+        afterClose={() => setShowModalDeleteBarangTransfert(false)}>
         <Card className="font-montserrat">
           <div className="flex items-start justify-between mb-4">
             <div className="font-bold text-gray-500 text-lg border-b pb-2">
-              Supprimer la transaction d'article entrant
+              Supprimer les transactions sortantes
             </div>
             <button
               onClick={() => {
-                setShowModalDeleteBarangMasuk(false);
+                setShowModalDeleteBarangTransfert(false);
               }}>
               <FontAwesomeIcon
                 icon={faTimes}
@@ -293,7 +281,7 @@ const DataBarangMasuk = () => {
           <div className="text-sm">
             Êtes-vous sûr de vouloir supprimer les transactions ?{" "}
             <strong className="font-lato">
-              {formDataDeleteBarangMasuk.no_transaksi}
+              {formDataDeleteBarangTransfert.no_transaksi}
             </strong>
             ?
           </div>
@@ -301,14 +289,14 @@ const DataBarangMasuk = () => {
             <button
               className="bg-red-500 hover:bg-red-400 text-red-100 rounded focus:ring focus:ring-red-100 focus:outline-none px-4 py-1.5"
               onClick={() => {
-                setShowModalDeleteBarangMasuk(false);
+                setShowModalDeleteBarangTransfert(false);
               }}>
               Annuler
             </button>
             <button
               className="bg-green-500 hover:bg-green-400 text-green-100 rounded focus:ring focus:ring-green-100 focus:outline-none px-4 py-1.5"
-              onClick={handleSubmitDeleteBarangMasuk}>
-              Oui
+              onClick={handleSubmitDeleteBarangTransfert}>
+              Oui 
             </button>
           </div>
         </Card>
@@ -316,21 +304,21 @@ const DataBarangMasuk = () => {
 
       <Card className="font-montserrat">
         <div className="font-bold text-gray-500 text-xl mb-6">
-          Éléments de connexion
+          Données de transfert d'article
         </div>
         <button
           className="bg-indigo-500 hover:bg-indigo-400 text-indigo-100 rounded focus:ring focus:ring-indigo-100 focus:outline-none px-4 py-1.5 mr-2 mb-4"
           onClick={() => {
-            history.push("/barang_masuk/tambah");
+            history.push("/barang_transfert/tambah");
           }}>
-          Ajouter un article Connexion
+          Transfèrer un article
         </button>
 
         <CSVLink
           className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded focus:ring focus:ring-indigo-100 focus:outline-none px-4 py-1.5 ml-2"
           headers={headersCSV}
           data={dataCSV}
-          filename="Solux_Donnée_Marchandises_Entrantes.csv"
+          filename="Solux_Données_de_Transfert.csv"
           target="_blank">
           <FontAwesomeIcon icon={faFileAlt} className="mr-2" />
           Exporter
@@ -370,4 +358,4 @@ const DataBarangMasuk = () => {
   );
 };
 
-export default DataBarangMasuk;
+export default DataBarangTransfert;
