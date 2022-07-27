@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
 
-const barangKeluarSchema = new mongoose.Schema(
+const barangTransfertSchema = new mongoose.Schema(
   {
     no_transaksi: {
       type: String,
       unique: true,
       default: () => {
-        return `OUT-${moment().format("YYYYMMDDHHmmss")}`;
+        return `TRANS-${moment().format("YYYYMMDDHHmmss")}`;
       },
     },
     kode_barang: {
@@ -18,7 +18,11 @@ const barangKeluarSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    id_showroom: {
+    id_showroom_up: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "showroom",
+    },
+    id_showroom_down: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "showroom",
     },
@@ -36,18 +40,18 @@ const barangKeluarSchema = new mongoose.Schema(
   }
 );
 
-barangKeluarSchema.virtual("barang_keluar", {
+barangTransfertSchema.virtual("barang_transfert", {
   ref: "barang",
   localField: "kode_barang",
   foreignField: "kode_barang",
   justOne: true
 });
 
-barangKeluarSchema.virtual("user_input", {
+barangTransfertSchema.virtual("user_input", {
   ref: "users",
   localField: "username",
   foreignField: "username",
   justOne: true
 });
 
-module.exports = mongoose.model("barangKeluar", barangKeluarSchema);
+module.exports = mongoose.model("barangTransfert", barangTransfertSchema);

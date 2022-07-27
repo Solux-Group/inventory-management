@@ -21,6 +21,7 @@ var supplierRouter = require("./routes/supplier");
 var showroomRouter = require("./routes/showroom");
 var barangMasukRouter = require("./routes/barangMasuk");
 var barangKeluarRouter = require("./routes/barangKeluar");
+var barangTransfertRouter = require("./routes/barangTransfert");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -74,6 +75,7 @@ app.use("/supplier", supplierRouter);
 app.use("/showroom", showroomRouter);
 app.use("/barang_masuk", barangMasukRouter);
 app.use("/barang_keluar", barangKeluarRouter);
+app.use("/barang_transfert", barangTransfertRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

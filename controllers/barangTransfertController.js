@@ -1,88 +1,87 @@
-const mongoose = require("mongoose");
 const moment = require("moment");
-const barangMasukModel = require("../models/barangMasukModel");
+const barangTransfertModel = require("../models/barangTransfertModel");
 const barangModel = require("../models/barangModel");
 
 module.exports = {
-  getExpenses: (req, res, next) => {
-    barangMasukModel
+  getIncome: (req, res, next) => {
+    barangTransfertModel
       .find()
-      .select("harga_beli kuantitas")
+      .select("harga_jual kuantitas")
       .exec((error, data) => {
         if (error) {
           return next(error);
         }
 
-        var expense = 0;
+        var income = 0;
 
         data.forEach((value, index) => {
-          expense = expense + value.harga_beli * value.kuantitas;
+          income = income + value.harga_jual * value.kuantitas;
         });
 
         return res.json({
           status: 200,
           message: "OK",
-          expense: expense,
+          income: income,
           error: false,
         });
       });
   },
-  getExpenseThisMonth: (req, res, next) => {
+  getIncomeThisMonth: (req, res, next) => {
     const date = new Date("now");
-    barangMasukModel
+    barangTransfertModel
       .find({
         created_at: {
           $gte: moment().startOf("month"),
           $lt: moment().endOf("month"),
         },
       })
-      .select("harga_beli kuantitas created_at")
+      .select("harga_jual kuantitas created_at")
       .exec((error, data) => {
         if (error) {
           return next(error);
         }
 
-        var expense = new Array(moment().daysInMonth()).fill(0);
+        var income = new Array(moment().daysInMonth()).fill(0);
 
         data.forEach((value, index) => {
           const day = moment(value.created_at).format("D");
-          expense[day - 1] += value.harga_beli * value.kuantitas;
+          income[day - 1] += value.harga_jual * value.kuantitas;
         });
 
         return res.json({
           status: 200,
           message: "OK",
-          data: expense,
+          data: income,
           error: false,
         });
       });
   },
-  getExpanseThisYear: (req, res, next) => {
+  getIncomeThisYear: (req, res, next) => {
     const date = new Date("now");
-    barangMasukModel
+    barangTransfertModel
       .find({
         created_at: {
           $gte: moment().startOf("year"),
           $lt: moment().endOf("year"),
         },
       })
-      .select("harga_beli kuantitas created_at")
+      .select("harga_jual kuantitas created_at")
       .exec((error, data) => {
         if (error) {
           return next(error);
         }
 
-        var expanse = new Array(12).fill(0);
+        var income = new Array(12).fill(0);
 
         data.forEach((value, index) => {
           const month = moment(value.created_at).format("M");
-          expanse[month - 1] += value.harga_beli * value.kuantitas;
+          income[month - 1] += value.harga_jual * value.kuantitas;
         });
 
         return res.json({
           status: 200,
           message: "OK",
-          data: expanse,
+          data: income,
           error: false,
         });
       });
@@ -98,23 +97,23 @@ module.exports = {
     };
 
     if (!moment(sampai).isValid()) {
-      return res
+      res
         .status(400)
         .json({ status: 400, message: "Request is not allowed", error: true });
     } else if (!moment(sampai).isValid()) {
-      return res
+      res
         .status(400)
         .json({ status: 400, message: "Request is not allowed", error: true });
     }
 
-    barangMasukModel
+    barangTransfertModel
       .find(filter)
       .select(
-        "no_transaksi kode_barang harga_beli kuantitas id_showroom id_supplier username created_at"
+        "no_transaksi kode_barang id_showroom_up id_showroom_down harga_jual kuantitas username created_at"
       )
       .sort([["created_at", -1]])
       .populate({
-        path: "barang_masuk",
+        path: "barang_transfert",
         select: "nama_barang id_satuan",
         populate: {
           path: "id_satuan",
@@ -122,8 +121,8 @@ module.exports = {
           select: "nama_satuan",
         },
       })
-      .populate("id_supplier")
-      .populate("id_showroom")
+      .populate("id_showroom_up")
+      .populate("id_showroom_down")
       .populate("user_input", "nama")
       .exec(function (error, data) {
         if (error) {
@@ -146,16 +145,16 @@ module.exports = {
     direction = direction === "asc" ? 1 : -1;
     const filter = { no_transaksi: new RegExp(query.q, "i") };
 
-    barangMasukModel
+    barangTransfertModel
       .find(filter)
       .select(
-        "no_transaksi kode_barang harga_beli kuantitas id_showroom id_supplier username created_at"
+        "no_transaksi kode_barang harga_jual kuantitas id_showroom_up id_showroom_down username created_at"
       )
       .skip((page - 1) * rows)
       .limit(rows)
       .sort([[field, direction]])
       .populate({
-        path: "barang_masuk",
+        path: "barang_transfert",
         select: "nama_barang id_satuan",
         populate: {
           path: "id_satuan",
@@ -163,8 +162,8 @@ module.exports = {
           select: "nama_satuan",
         },
       })
-      .populate("id_supplier")
-      .populate("id_showroom")
+      .populate("id_showroom_up")
+      .populate("id_showroom_down")
       .populate("user_input", "nama")
       .exec(function (error, data) {
         if (error) {
@@ -172,13 +171,13 @@ module.exports = {
         }
 
         // count all
-        barangMasukModel.countDocuments().exec(function (error, count) {
+        barangTransfertModel.countDocuments().exec(function (error, count) {
           if (error) {
             return next(error);
           }
 
           // count all with filter
-          barangMasukModel
+          barangTransfertModel
             .find(filter)
             .countDocuments()
             .exec(function (error, countFiltered) {
@@ -200,15 +199,14 @@ module.exports = {
       });
   },
   create: async (req, res, next) => {
-    const { id_supplier, id_showroom, kode_barang, kuantitas, harga_beli, username } =
-      req.body;
+    const { kode_barang, id_showroom_up, id_showroom_down, kuantitas, harga_jual, username } = req.body;
     var isError = false;
 
-    if (id_supplier === undefined || id_supplier === "") {
+    if (kode_barang === undefined || kode_barang === "") {
       isError = true;
-    } else if (id_showroom === undefined || id_showroom === "") {
+    } else if (id_showroom_up === undefined || id_showroom_up === "") {
       isError = true;
-    } else if (kode_barang === undefined || kode_barang === "") {
+    } else if (id_showroom_down === undefined || id_showroom_down === "") {
       isError = true;
     } else if (
       kuantitas === undefined ||
@@ -217,9 +215,9 @@ module.exports = {
     ) {
       isError = true;
     } else if (
-      harga_beli === undefined ||
-      harga_beli === "" ||
-      typeof harga_beli !== "number"
+      harga_jual === undefined ||
+      harga_jual === "" ||
+      typeof harga_jual !== "number"
     ) {
       isError = true;
     } else if (username === undefined || username === "") {
@@ -237,19 +235,19 @@ module.exports = {
     try {
       await barangModel.findOneAndUpdate(
         { kode_barang: kode_barang },
-        { $inc: id_showroom === "62ceeff20fe57200df0243a5" ? { stok1: kuantitas, stok: kuantitas } : id_showroom === "62cfd0a4f824a84be4da0065" ? { stok2: kuantitas, stok: kuantitas } : 0},
+        { $inc: id_showroom_up === "62ceeff20fe57200df0243a5" ? { stok1: -kuantitas, stok2: kuantitas } : id_showroom_up === "62cfd0a4f824a84be4da0065" ? { stok2: -kuantitas, stok1: kuantitas } : 0},
       );
 
-      const newBarangMasuk = new barangMasukModel({
-        id_supplier: id_supplier,
-        id_showroom: id_showroom,
+      const newBarangTransfert = new barangTransfertModel({
         kode_barang: kode_barang,
+        id_showroom_up: id_showroom_up,
+        id_showroom_down: id_showroom_down,
         kuantitas: kuantitas,
-        harga_beli: harga_beli,
+        harga_jual: harga_jual,
         username: username,
       });
 
-      await newBarangMasuk.save();
+      await newBarangTransfert.save();
 
       return res.json({
         status: 200,
@@ -262,7 +260,7 @@ module.exports = {
   },
   delete: (req, res, next) => {
     const { id } = req.params;
-    barangMasukModel.findOneAndDelete({ no_transaksi: id }, function (error) {
+    barangTransfertModel.findOneAndDelete({ no_transaksi: id }, function (error) {
       if (error) {
         return next(error);
       } else {
