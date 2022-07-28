@@ -13,6 +13,7 @@ import PageNotFound from "./pages/PageNotFound";
 
 import TambahBarang from "./pages/Barang/TambahBarang";
 import EditBarang from "./pages/Barang/EditBarang";
+import DetailBarang from "./pages/Barang/DetailBarang";
 
 import Container from "./components/Container";
 
@@ -108,6 +109,7 @@ function App() {
           <PrivateRoute path="/barang" exact component={DataBarang} />
           <PrivateRoute path="/barang/tambah" exact component={TambahBarang} />
           <PrivateRoute path="/barang/:id/edit" exact component={EditBarang} />
+          <PrivateRoute path="/barang/:id/detail" exact component={DetailBarang} />
 
           <PrivateRoute path="/kategori" exact component={DataKategori} />
           <PrivateRoute path="/satuan" exact component={DataSatuan} />

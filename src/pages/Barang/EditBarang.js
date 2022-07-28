@@ -312,126 +312,6 @@ const EditBarang = (props) => {
                 {`Prix d'achat ${formDataError.harga_beli}`}
               </div>
             </div>
-
-            <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
-              <div className="col-span-full md:col-span-4">
-                Showroom Dakar
-              </div>
-              <select
-                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                value={formData.id_showroom1}
-                name="id_showroom1"
-                disabled
-                //onChange={handleChange}
-                >
-                <option value="" disabled>
-                  -- Choix de Showroom --
-                </option>
-                {datashowroom.map((value, index) => {
-                  return (
-                    <option value={value._id} key={index}>
-                      {value.nama_showroom}
-                    </option>
-                  );
-                })}
-              </select>
-              <div
-                className={`${
-                  formDataError.id_showroom1 ? "" : "hidden"
-                } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom1}`}
-              </div>
-              <div
-                className={`${
-                  formDataError.id_showroom1 ? "" : "hidden"
-                } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom1}`}
-              </div>
-            </div>
-            <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
-              <div className="col-span-full md:col-span-4">
-                {`Stock Dakar`} 
-              </div>
-              <input
-                type="text"
-                className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                placeholder="Stock"
-                name="stok1"
-                value={formData.stok1}
-                disabled
-                //onChange={handleChange}
-              />
-              <div
-                className={`${
-                  formDataError.stok1 ? "" : "hidden"
-                } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`Stok ${formDataError.stok1}`}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
-              <div className="col-span-full md:col-span-4">
-                Showroom St. Louis
-              </div>
-              <select
-                className="col-span-full md:col-span-8 bg-white border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                value={formData.id_showroom2}
-                name="id_showroom2"
-                disabled
-                //onChange={handleChange}
-                >
-                <option value="" disabled>
-                  -- Choix de Showroom --
-                </option>
-                {datashowroom.map((value, index) => {
-                  return (
-                    <option value={value._id} key={index}>
-                      {value.nama_showroom}
-                    </option>
-                  );
-                })}
-              </select>
-              <div
-                className={`${
-                  formDataError.id_showroom2 ? "" : "hidden"
-                } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom2}`}
-              </div>
-            </div>
-            <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
-                <div className="col-span-full md:col-span-4">
-                  {`Stock St. Louis`} 
-                </div>
-                <input
-                type="text"
-                className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
-                placeholder="Stock"
-                name="stok2"
-                value={formData.stok2}
-                disabled
-                //onChange={handleChange}
-                />
-                <div
-                  className={`${
-                    formDataError.stok2 ? "" : "hidden"
-                  } md:col-start-5 col-span-full text-sm text-red-400`}>
-                  {`Stok ${formDataError.stok2}`}
-                </div>
-            </div>
-
-            <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
-                <div className="col-span-full md:col-span-4">
-                  {`Stock Total`} 
-                </div>
-                {formData.stok}
-                <div
-                  className={`${
-                    formDataError.stok ? "" : "hidden"
-                  } md:col-start-5 col-span-full text-sm text-red-400`}>
-                  {`Stok ${formDataError.stok}`}
-                </div>
-            </div>
-
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
                 Catégorie <span className="text-red-400">*</span>
@@ -492,6 +372,7 @@ const EditBarang = (props) => {
           </button>
         </form>
       </Card>
+      
     </>
   );
 };
