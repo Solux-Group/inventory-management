@@ -371,7 +371,7 @@ const IndexPage = () => {
                   currency: "USD",
                 })}
               </div>
-              <div className="text-sm">Revenu</div>
+              <div className="text-sm">Bénéfice</div>
             </div>
           </div>
         </div>
