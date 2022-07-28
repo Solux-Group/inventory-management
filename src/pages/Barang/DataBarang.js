@@ -207,6 +207,13 @@ const DataBarang = () => {
                 onClick={() => {
                   history.push(`/barang/${value._id}/edit`);
                 }}>
+                Détails
+              </button>
+              <button
+                className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-4 py-1.5"
+                onClick={() => {
+                  history.push(`/barang/${value._id}/edit`);
+                }}>
                 Modifier
               </button>
               <button
