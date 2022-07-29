@@ -68,10 +68,6 @@ const TambahShowroom = () => {
       value = value.replace(/\D/g, "");
     }
 
-    if (name === "emplacement") {
-      value = value.replace(/\D/g, "");
-    }
-
     if (value) {
       setFormData((state) => ({ ...state, [name]: value }));
       setFormDataError((state) => ({ ...state, [name]: false }));
