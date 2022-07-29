@@ -95,15 +95,15 @@ module.exports = {
 
     if (nama_showroom === undefined || nama_showroom === "") {
       isError = true;
-    } else if (emplacement1 === undefined || emplacement1 === "") {
+    } else if (emplacement1 === undefined) {
       isError = true;
-    } else if (emplacement2 === undefined || emplacement2 === "") {
+    } else if (emplacement2 === undefined) {
       isError = true;
-    } else if (emplacement3 === undefined || emplacement3 === "") {
+    } else if (emplacement3 === undefined) {
       isError = true;
-    } else if (emplacement4 === undefined || emplacement4 === "") {
+    } else if (emplacement4 === undefined) {
       isError = true;
-    } else if (emplacement5 === undefined || emplacement5 === "") {
+    } else if (emplacement5 === undefined) {
       isError = true;
     } else if (
       no_telp === undefined ||
@@ -149,15 +149,15 @@ module.exports = {
 
     if (nama_showroom === undefined || nama_showroom === "") {
       isError = true;
-    } else if (emplacement1 === undefined || emplacement1 === "") {
+    } else if (emplacement1 === undefined) {
       isError = true;
-    } else if (emplacement2 === undefined || emplacement2 === "") {
+    } else if (emplacement2 === undefined) {
       isError = true;
-    } else if (emplacement3 === undefined || emplacement3 === "") {
+    } else if (emplacement3 === undefined) {
       isError = true;
-    } else if (emplacement4 === undefined || emplacement4 === "") {
+    } else if (emplacement4 === undefined) {
       isError = true;
-    } else if (emplacement5 === undefined || emplacement5 === "") {
+    } else if (emplacement5 === undefined) {
       isError = true;
     } else if (
       no_telp === undefined ||
