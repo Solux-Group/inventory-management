@@ -103,7 +103,7 @@ const TambahBarang = () => {
 
       if (value === undefined || value === "") {
         isError = true;
-        setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+        setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
       }
     });
 
@@ -122,7 +122,7 @@ const TambahBarang = () => {
 
     setFormData((state) => ({ ...state, [name]: value }));
     if (value === undefined || value === "") {
-      setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+      setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
     } else {
       setFormDataError((state) => ({ ...state, [name]: false }));
     }

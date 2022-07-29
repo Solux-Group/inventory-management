@@ -128,7 +128,7 @@ const DataKategori = () => {
     e.preventDefault();
 
     if (!formDataAddKategori.nama_kategori) {
-      setFormDataAddKategoriError("Nom de catégorie Doit être rempli.");
+      setFormDataAddKategoriError("Nom de catégorie doit être rempli.");
       return false;
     }
 
@@ -165,7 +165,7 @@ const DataKategori = () => {
     e.preventDefault();
 
     if (!formDataEditKategori.nama_kategori) {
-      setFormDataEditKategoriError("Nom de catégorie Doit être rempli.");
+      setFormDataEditKategoriError("Nom de catégorie doit être rempli.");
       return false;
     }
 
@@ -358,7 +358,7 @@ const DataKategori = () => {
                     if (value) {
                       setFormDataAddKategoriError(false);
                     } else {
-                      setFormDataAddKategoriError("Nom de catégorie Doit être rempli.");
+                      setFormDataAddKategoriError("Nom de catégorie doit être rempli.");
                     }
                   }}
                 />
@@ -428,7 +428,7 @@ const DataKategori = () => {
                       setFormDataEditKategoriError(false);
                     } else {
                       setFormDataEditKategoriError(
-                        "Nom de catégorie Doit être rempli."
+                        "Nom de catégorie doit être rempli."
                       );
                     }
                   }}

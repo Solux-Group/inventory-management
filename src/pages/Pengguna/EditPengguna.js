@@ -79,7 +79,7 @@ const EditPengguna = (props) => {
 
       if (value === undefined || value === "") {
         isError = true;
-        setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+        setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
       }
     });
 
@@ -101,7 +101,7 @@ const EditPengguna = (props) => {
     setFormData((state) => ({ ...state, [name]: value }));
     if (name === "email") {
       if (value === undefined || value === "") {
-        setFormDataError((state) => ({ ...state, [name]: "Doit être rempli." }));
+        setFormDataError((state) => ({ ...state, [name]: "doit être rempli." }));
       } else if (!value.includes("@") || !value.includes(".")) {
         setFormDataError((state) => ({ ...state, [name]: "tidak valid." }));
       } else {
@@ -109,7 +109,7 @@ const EditPengguna = (props) => {
       }
     } else {
       if (value === undefined || value === "") {
-        setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+        setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
       } else {
         setFormDataError((state) => ({ ...state, [name]: false }));
       }
@@ -217,7 +217,7 @@ const EditPengguna = (props) => {
 
     if (!password || password.length < 6) {
       setFormDataUbahPasswordError({
-        password: "Doit être rempli d'au moins 6 caractères.",
+        password: "doit être rempli d'au moins 6 caractères.",
       });
       return false;
     }
@@ -456,7 +456,7 @@ const EditPengguna = (props) => {
                     setFormDataUbahPassword({ password: value });
                     if (!value || value.length < 6) {
                       setFormDataUbahPasswordError({
-                        password: "Doit être rempli d'au moins 6 caractères.",
+                        password: "doit être rempli d'au moins 6 caractères.",
                       });
                     } else {
                       setFormDataUbahPasswordError({

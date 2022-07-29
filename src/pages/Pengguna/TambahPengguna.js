@@ -54,7 +54,7 @@ const TambahPengguna = () => {
           isError = true;
           setFormDataError((state) => ({
             ...state,
-            [name]: "Doit être rempli minimal 5 karakter.",
+            [name]: "doit être rempli minimal 5 karakter.",
           }));
         }
       } else if (name === "password") {
@@ -62,13 +62,13 @@ const TambahPengguna = () => {
           isError = true;
           setFormDataError((state) => ({
             ...state,
-            [name]: "Doit être rempli d'au moins 6 caractères.",
+            [name]: "doit être rempli d'au moins 6 caractères.",
           }));
         }
       } else if (name === "email") {
         if (value === undefined || value === "") {
           isError = true;
-          setFormDataError((state) => ({ ...state, [name]: "Doit être rempli." }));
+          setFormDataError((state) => ({ ...state, [name]: "doit être rempli." }));
         } else if (!value.includes("@") || !value.includes(".")) {
           isError = true;
           setFormDataError((state) => ({ ...state, [name]: "tidak valid." }));
@@ -76,7 +76,7 @@ const TambahPengguna = () => {
       } else {
         if (value === undefined || value === "") {
           isError = true;
-          setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+          setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
         }
       }
     });
@@ -102,14 +102,14 @@ const TambahPengguna = () => {
       if (value.length < 5) {
         setFormDataError((state) => ({
           ...state,
-          [name]: "Doit être rempli minimal 5 karakter.",
+          [name]: "doit être rempli minimal 5 karakter.",
         }));
       } else {
         setFormDataError((state) => ({ ...state, [name]: false }));
       }
     } else if (name === "email") {
       if (value === undefined || value === "") {
-        setFormDataError((state) => ({ ...state, [name]: "Doit être rempli." }));
+        setFormDataError((state) => ({ ...state, [name]: "doit être rempli." }));
       } else if (!value.includes("@") || !value.includes(".")) {
         setFormDataError((state) => ({ ...state, [name]: "tidak valid." }));
       } else {
@@ -119,14 +119,14 @@ const TambahPengguna = () => {
       if (value.length < 6) {
         setFormDataError((state) => ({
           ...state,
-          [name]: "Doit être rempli d'au moins 6 caractères.",
+          [name]: "doit être rempli d'au moins 6 caractères.",
         }));
       } else {
         setFormDataError((state) => ({ ...state, [name]: false }));
       }
     } else {
       if (value === undefined || value === "") {
-        setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+        setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
       } else {
         setFormDataError((state) => ({ ...state, [name]: false }));
       }

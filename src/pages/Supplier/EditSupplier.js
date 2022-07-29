@@ -40,7 +40,7 @@ const EditSupplier = (props) => {
 
       if (!value) {
         isError = true;
-        setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+        setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
       }
     });
 
@@ -84,7 +84,7 @@ const EditSupplier = (props) => {
       setFormDataError((state) => ({ ...state, [name]: false }));
     } else {
       setFormData((state) => ({ ...state, [name]: value }));
-      setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+      setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
     }
   };
 

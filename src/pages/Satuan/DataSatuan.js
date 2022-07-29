@@ -127,7 +127,7 @@ const DataSatuan = () => {
     e.preventDefault();
 
     if (!formDataAddSatuan.nama_satuan) {
-      setFormDataAddSatuanError("Nama satuan Doit être rempli.");
+      setFormDataAddSatuanError("Nama satuan doit être rempli.");
       return false;
     }
 
@@ -164,7 +164,7 @@ const DataSatuan = () => {
     e.preventDefault();
 
     if (!formDataEditSatuan.nama_satuan) {
-      setFormDataEditSatuanError("Nama satuan Doit être rempli.");
+      setFormDataEditSatuanError("Nama satuan doit être rempli.");
       return false;
     }
 
@@ -357,7 +357,7 @@ const DataSatuan = () => {
                     if (value) {
                       setFormDataAddSatuanError(false);
                     } else {
-                      setFormDataAddSatuanError("Nama satuan Doit être rempli.");
+                      setFormDataAddSatuanError("Nama satuan doit être rempli.");
                     }
                   }}
                 />

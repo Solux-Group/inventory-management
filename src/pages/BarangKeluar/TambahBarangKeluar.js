@@ -79,7 +79,7 @@ const TambahBarangKeluar = () => {
 
       if (!value) {
         isError = true;
-        setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+        setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
       }
     });
 
@@ -101,7 +101,7 @@ const TambahBarangKeluar = () => {
 
     setFormData((state) => ({ ...state, [name]: value }));
     if (value === undefined || value === "") {
-      setFormDataError((state) => ({ ...state, [name]: "Doit être rempli" }));
+      setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
     } else {
       if (name === "kode_barang") {
         const { stok1, stok2, harga_jual } = dataBarang.find(

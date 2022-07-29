@@ -215,7 +215,7 @@ const LaporanBarang = () => {
                 Marchandises sortantes
               </label>
               <div className="text-red-400 text-sm">
-                {laporanError.type ? `Laporan Doit être rempli` : ""}
+                {laporanError.type ? `Laporan doit être rempli` : ""}
               </div>
             </div>
           </div>
@@ -229,7 +229,7 @@ const LaporanBarang = () => {
               onChange={handleChange}
             />
             <div className="text-red-400 text-sm">
-              {laporanError.start ? `Tanggal Doit être rempli` : ""}
+              {laporanError.start ? `Tanggal doit être rempli` : ""}
             </div>
           </div>
           <div className="flex flex-col space-y-2">
@@ -242,7 +242,7 @@ const LaporanBarang = () => {
               onChange={handleChange}
             />
             <div className="text-red-400 text-sm">
-              {laporanError.end ? `Tanggal Doit être rempli` : ""}
+              {laporanError.end ? `Tanggal doit être rempli` : ""}
             </div>
           </div>
         </div>

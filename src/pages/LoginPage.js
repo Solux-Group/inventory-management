@@ -121,7 +121,7 @@ const LoginPage = () => {
                       "Le nom d'utilisateur doit être composé de lettres ou de chiffres."
                     );
                   } else if (value.length === 0) {
-                    setErrorUsername("Le nom d'utilisateur Doit être rempli.");
+                    setErrorUsername("Le nom d'utilisateur doit être rempli.");
                   } else {
                     setErrorUsername(false);
                   }
@@ -142,9 +142,9 @@ const LoginPage = () => {
                 onChange={(e) => {
                   const value = e.target.value;
                   if (value.length === 0) {
-                    setErrorPassword("Doit être rempli.");
+                    setErrorPassword("doit être rempli.");
                   } else if (value.length < 6) {
-                    setErrorPassword("Doit être d'au moins 6 caractères.");
+                    setErrorPassword("doit être d'au moins 6 caractères.");
                   } else {
                     setErrorPassword(false);
                   }
