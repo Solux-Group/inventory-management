@@ -221,14 +221,14 @@ const TambahShowroom = () => {
 
           <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
             <div className={`${
-              formData.num_emplacement >= 2 ? "" : "hidden"
+              formData.num_emplacement >= 2  && formData.emplacement1 !== "" ? "" : "hidden"
             } col-span-full md:col-span-4`}>
               Emplacement {2}
             </div>
             <input
               type="text"
               className={`${
-                formData.num_emplacement >= 2 ? "" : "hidden"
+                formData.num_emplacement >= 2  && formData.emplacement1 !== "" ? "" : "hidden"
               } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
               placeholder="Nom de l'emplacement"
               name="emplacement2"
@@ -237,7 +237,7 @@ const TambahShowroom = () => {
             />
             <div
               className={`${
-                formDataError.emplacement2 && formData.emplacement1 ? "" : "hidden"
+                formDataError.emplacement2 ? "" : "hidden"
               } md:col-start-5 col-span-full text-sm text-red-400`}>
               {`Cet emplacement ${formDataError.emplacement2}`}
             </div>
@@ -259,14 +259,14 @@ const TambahShowroom = () => {
 
           <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
             <div className={`${
-              formData.num_emplacement >= 3 ? "" : "hidden"
+              formData.num_emplacement >= 3 && formData.emplacement2 !== "" ? "" : "hidden"
             } col-span-full md:col-span-4`}>
               Emplacement {3}
             </div>
             <input
               type="text"
               className={`${
-                formData.num_emplacement >= 3 ? "" : "hidden"
+                formData.num_emplacement >= 3 && formData.emplacement2 !== "" ? "" : "hidden"
               } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
               placeholder="Nom de l'emplacement"
               name="emplacement3"
@@ -275,7 +275,7 @@ const TambahShowroom = () => {
             />
             <div
               className={`${
-                formDataError.emplacement3 && formData.emplacement2 ? "" : "hidden"
+                formDataError.emplacement3 ? "" : "hidden"
               } md:col-start-5 col-span-full text-sm text-red-400`}>
               {`Cet emplacement ${formDataError.emplacement3}`}
             </div>
@@ -297,14 +297,14 @@ const TambahShowroom = () => {
 
           <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
             <div className={`${
-              formData.num_emplacement >= 4 ? "" : "hidden"
+              formData.num_emplacement >= 4 && formData.emplacement3 !== "" ? "" : "hidden"
             } col-span-full md:col-span-4`}>
               Emplacement {4}
             </div>
             <input
               type="text"
               className={`${
-                formData.num_emplacement >= 4 ? "" : "hidden"
+                formData.num_emplacement >= 4 && formData.emplacement3 !== "" ? "" : "hidden"
               } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
               placeholder="Nom de l'emplacement"
               name="emplacement4"
@@ -335,14 +335,14 @@ const TambahShowroom = () => {
 
           <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
             <div className={`${
-              formData.num_emplacement >= 5 ? "" : "hidden"
+              formData.num_emplacement >= 5 && formData.emplacement4 !== "" ? "" : "hidden"
             } col-span-full md:col-span-4`}>
               Emplacement {5}
             </div>
             <input
               type="text"
               className={`${
-                formData.num_emplacement >= 5 ? "" : "hidden"
+                formData.num_emplacement >= 5 && formData.emplacement4 !== "" ? "" : "hidden"
               } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
               placeholder="Nom de l'emplacement"
               name="emplacement5"
