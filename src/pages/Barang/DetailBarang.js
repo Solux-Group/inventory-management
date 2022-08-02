@@ -247,7 +247,22 @@ const DetailBarang = (props) => {
         <div className="font-montserrat font-bold text-lg text-gray-500 mb-6">
           Détails de l'articles
         </div>
-        <form onSubmit={handleSubmit}>
+
+        <div className="flex flex-col justify-center space-y-4">
+            <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
+              <div className="col-span-full md:col-span-4">
+                Nom des marchandises <span className="text-red-400">*</span>
+              </div>
+              <div>{formData.nama_barang}</div>
+            </div>
+
+            <div className="grid grid-cols-12 items-start gap-x-4 gap-y-1">
+              <div className="col-span-full md:col-span-4">
+                Commentaire <span className="text-red-400">*</span>
+              </div>
+              <div>{formData.comment}</div>
+            </div>
+
           <div className="flex flex-col justify-center space-y-4">
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
@@ -271,18 +286,6 @@ const DetailBarang = (props) => {
                   );
                 })}
               </select>
-              <div
-                className={`${
-                  formDataError.id_showroom1 ? "" : "hidden"
-                } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom1}`}
-              </div>
-              <div
-                className={`${
-                  formDataError.id_showroom1 ? "" : "hidden"
-                } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom1}`}
-              </div>
             </div>
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
               <div className="col-span-full md:col-span-4">
@@ -297,12 +300,6 @@ const DetailBarang = (props) => {
                 disabled
                 //onChange={handleChange}
               />
-              <div
-                className={`${
-                  formDataError.stok1 ? "" : "hidden"
-                } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`Stok ${formDataError.stok1}`}
-              </div>
             </div>
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
@@ -327,12 +324,6 @@ const DetailBarang = (props) => {
                   );
                 })}
               </select>
-              <div
-                className={`${
-                  formDataError.id_showroom2 ? "" : "hidden"
-                } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`showroom ${formDataError.id_showroom2}`}
-              </div>
             </div>
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
                 <div className="col-span-full md:col-span-4">
@@ -347,12 +338,6 @@ const DetailBarang = (props) => {
                 disabled
                 //onChange={handleChange}
                 />
-                <div
-                  className={`${
-                    formDataError.stok2 ? "" : "hidden"
-                  } md:col-start-5 col-span-full text-sm text-red-400`}>
-                  {`Stok ${formDataError.stok2}`}
-                </div>
             </div>
 
             <div className={`grid grid-cols-12 items-center gap-x-4 gap-y-1`}>
@@ -360,18 +345,12 @@ const DetailBarang = (props) => {
                   {`Stock Total`} 
                 </div>
                 {formData.stok}
-                <div
-                  className={`${
-                    formDataError.stok ? "" : "hidden"
-                  } md:col-start-5 col-span-full text-sm text-red-400`}>
-                  {`Stok ${formDataError.stok}`}
-                </div>
             </div>
           </div>
           <button className="bg-indigo-500 hover:bg-indigo-400 text-indigo-100 rounded focus:ring focus:ring-indigo-100 focus:outline-none w-full px-4 py-1.5 mt-6">
             Sauvegarder
           </button>
-        </form>
+          </div>
       </Card>
     </>
   );
