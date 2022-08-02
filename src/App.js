@@ -163,14 +163,14 @@ function App() {
           <PrivateRoute
             path="/barang_transfert"
             exact
-            render={(props) => {
+            /*render={(props) => {
               if (localStorage.getItem("role") !== "admin") {
                 return props.history.goBack();
               } else {
                 return <DataBarangTransfert {...props} />;
               }
-            }}
-            //component={DataBarangTransfert}
+            }}*/
+            component={DataBarangTransfert}
           />
           <PrivateRoute
             path="/barang_transfert/tambah"
