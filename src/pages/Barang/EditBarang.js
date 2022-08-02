@@ -12,6 +12,7 @@ const EditBarang = (props) => {
   const { id } = props.match.params;
   const [formData, setFormData] = useState({
     nama_barang: "",
+    comment: "",
     stok: "",
     harga_jual: "",
     harga_beli: "",
@@ -24,6 +25,7 @@ const EditBarang = (props) => {
   });
   const [formDataError, setFormDataError] = useState({
     nama_barang: false,
+    comment: false,
     stok: false,
     harga_jual: false,
     harga_beli: false,
@@ -268,6 +270,26 @@ const EditBarang = (props) => {
                 {`Nom Marchandise ${formDataError.nama_barang}`}
               </div>
             </div>
+
+            <div className="grid grid-cols-12 items-start gap-x-4 gap-y-1">
+              <div className="col-span-full md:col-span-4">
+                Commentaire <span className="text-red-400">*</span>
+              </div>
+              <textarea
+                className="col-span-full md:col-span-8 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2"
+                placeholder="Commentaire"
+                name="comment"
+                value={formData.comment}
+                onChange={handleChange}></textarea>
+              <div
+                className={`${
+                  formDataError.comment ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`Commentaire ${formDataError.comment}`}
+              </div>
+            </div>
+
+
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
                 Prix de Vente <span className="text-red-400">*</span>
