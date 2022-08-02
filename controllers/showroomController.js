@@ -149,6 +149,14 @@ module.exports = {
 
     if (nama_showroom === undefined || nama_showroom === "") {
       isError = true;
+    }else if (
+      no_telp === undefined ||
+      no_telp === "" ||
+      no_telp.match(/\D/g)
+    ) {
+      isError = true;
+    } else if (alamat === undefined || alamat === "") {
+      isError = true;
     } else if (emplacement1 === undefined) {
       isError = true;
     } else if (emplacement2 === undefined) {
@@ -159,15 +167,7 @@ module.exports = {
       isError = true;
     } else if (emplacement5 === undefined) {
       isError = true;
-    } else if (
-      no_telp === undefined ||
-      no_telp === "" ||
-      no_telp.match(/\D/g)
-    ) {
-      isError = true;
-    } else if (alamat === undefined || alamat === "") {
-      isError = true;
-    }
+    } 
   
     if (isError) {
       return res.json({
