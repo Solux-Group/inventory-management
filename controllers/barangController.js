@@ -35,7 +35,7 @@ module.exports = {
     barangModel
       .find(filter)
       .select(
-        "kode_barang nama_barang stok harga_jual harga_beli id_kategori id_showroom1 stok1 id_showroom2 stok2 id_satuan"
+        "kode_barang nama_barang comment stok harga_jual harga_beli id_kategori id_showroom1 stok1 id_showroom2 stok2 id_satuan"
       )
       .skip((page - 1) * rows)
       .limit(rows)
@@ -96,12 +96,13 @@ module.exports = {
         }
       })
       .select(
-        "kode_barang nama_barang stok harga_jual harga_beli id_kategori id_showroom1 stok1 id_showroom2 stok2 id_satuan"
+        "kode_barang nama_barang comment stok harga_jual harga_beli id_kategori id_showroom1 stok1 id_showroom2 stok2 id_satuan"
       );
   },
   create: (req, res, next) => {
     const {
       nama_barang,
+      comment,
       stok,
       harga_jual,
       harga_beli,
@@ -115,6 +116,8 @@ module.exports = {
     var isError = false;
 
     if (nama_barang === undefined || nama_barang === "") {
+      isError = true;
+    } else if (comment === undefined || comment === "") {
       isError = true;
     } else if (stok === undefined || stok === "" || typeof stok !== 'number') {
       isError = true;
@@ -154,6 +157,7 @@ module.exports = {
 
     const newBarang = new barangModel({
       nama_barang: nama_barang,
+      comment: comment,
       harga_jual: harga_jual,
       harga_beli: harga_beli,
       id_kategori: id_kategori,
@@ -180,11 +184,13 @@ module.exports = {
   },
   update: (req, res, next) => {
     const { id } = req.params;
-    const { nama_barang, stok, harga_jual, harga_beli, id_kategori, id_showroom1, stok1, id_showroom2, stok2, id_satuan } =
+    const { nama_barang, comment, stok, harga_jual, harga_beli, id_kategori, id_showroom1, stok1, id_showroom2, stok2, id_satuan } =
       req.body;
     var isError = false;
 
     if (nama_barang === undefined || nama_barang === "") {
+      isError = true;
+    } else if (comment === undefined || comment === "") {
       isError = true;
     } else if (
       stok === undefined ||
@@ -238,6 +244,7 @@ module.exports = {
       id,
       {
         nama_barang: nama_barang,
+        comment: comment,
         harga_jual: harga_jual,
         harga_beli: harga_beli,
         id_showroom1: id_showroom1,
