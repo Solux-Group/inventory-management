@@ -197,12 +197,6 @@ const TambahShowroom = () => {
                 value={formData.emplacement1}
                 onChange={handleChange}
               />
-              <div
-              className={`${
-                formDataError.emplacement1 ? "" : "hidden"
-              } md:col-start-5 col-span-full text-sm text-red-400`}>
-              {`Cet emplacement ${formDataError.emplacement1}`}
-            </div>
               <div className={`${
                 formData.num_emplacement === 1 ? "" : "hidden"
               } col-span-full md:col-span-1`}>
@@ -235,14 +229,8 @@ const TambahShowroom = () => {
               value={formData.emplacement2}
               onChange={handleChange}
             />
-            <div
-              className={`${
-                formDataError.emplacement2 ? "" : "hidden"
-              } md:col-start-5 col-span-full text-sm text-red-400`}>
-              {`Cet emplacement ${formDataError.emplacement2}`}
-            </div>
             <div className={`${
-              formData.num_emplacement === 2 ? "" : "hidden"
+              formData.num_emplacement === 2  && formData.emplacement1 !== "" ? "" : "hidden"
             } col-span-full md:col-span-1`}>
               <button
                 className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
@@ -273,14 +261,8 @@ const TambahShowroom = () => {
               value={formData.emplacement3}
               onChange={handleChange}
             />
-            <div
-              className={`${
-                formDataError.emplacement3 ? "" : "hidden"
-              } md:col-start-5 col-span-full text-sm text-red-400`}>
-              {`Cet emplacement ${formDataError.emplacement3}`}
-            </div>
             <div className={`${
-              formData.num_emplacement === 3 ? "" : "hidden"
+              formData.num_emplacement === 3  && formData.emplacement2 !== "" ? "" : "hidden"
             } col-span-full md:col-span-1`}>
               <button
                 className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
@@ -311,14 +293,8 @@ const TambahShowroom = () => {
               value={formData.emplacement4}
               onChange={handleChange}
             />
-            <div
-              className={`${
-                formDataError.emplacement4 && formData.emplacement4 ? "" : "hidden"
-              } md:col-start-5 col-span-full text-sm text-red-400`}>
-              {`Cet emplacement ${formDataError.emplacement4}`}
-            </div>
             <div className={`${
-              formData.num_emplacement === 4 ? "" : "hidden"
+              formData.num_emplacement === 4  && formData.emplacement3 !== "" ? "" : "hidden"
             } col-span-full md:col-span-1`}>
               <button
                 className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
@@ -349,14 +325,8 @@ const TambahShowroom = () => {
               value={formData.emplacement5}
               onChange={handleChange}
             />
-            <div
-              className={`${
-                formDataError.emplacement5 && formData.emplacement4 ? "" : "hidden"
-              } md:col-start-5 col-span-full text-sm text-red-400`}>
-              {`Cet emplacement ${formDataError.emplacement5}`}
-            </div>
             <div className={`${
-              formData.num_emplacement === 5 ? "" : "hidden"
+              formData.num_emplacement === 5  && formData.emplacement4 !== "" ? "" : "hidden"
             } col-span-full md:col-span-1 hidden`}>
               <button
                 className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
