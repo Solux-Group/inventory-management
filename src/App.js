@@ -175,14 +175,14 @@ function App() {
           <PrivateRoute
             path="/barang_transfert/tambah"
             exact
-            render={(props) => {
+            /*render={(props) => {
               if (localStorage.getItem("role") !== "admin") {
                 return props.history.goBack();
               } else {
                 return <TambahBarangTransfert {...props} />;
               }
-            }}
-            //component={TambahBarangTransfert}
+            }}*/
+            component={TambahBarangTransfert}
           />
 
           <PrivateRoute path="/laporan" exact component={LaporanBarang} />

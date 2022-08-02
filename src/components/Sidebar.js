@@ -119,6 +119,7 @@ const Sidebar = ({ show, onShown = () => {} }) => {
             { name: "Inventaire", href: "/barang" },
             { name: "Catégorie d'article", href: "/kategori" },
             { name: "Unité d'article", href: "/satuan" },
+            { name: "Showroom", href: "/showroom" },
           ],
         },
         {
@@ -135,6 +136,11 @@ const Sidebar = ({ show, onShown = () => {} }) => {
           name: "Marchandises sortantes",
           icon: <FontAwesomeIcon icon={faBoxOpen} />,
           href: "/barang_keluar",
+        },
+        {
+          name: "Transfert de marchandises",
+          icon: <FontAwesomeIcon icon={faBoxOpen} />,
+          href: "/barang_transfert",
         },
         {
           name: "Signaler",
