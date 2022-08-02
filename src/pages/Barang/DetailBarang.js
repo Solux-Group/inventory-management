@@ -251,16 +251,16 @@ const DetailBarang = (props) => {
         <div className="flex flex-col justify-center space-y-4">
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Nom des marchandises <span className="text-red-400">*</span>
+                Nom des marchandises 
               </div>
-              <div>{formData.nama_barang}</div>
+              <div className="col-span-full md:col-span-8">{formData.nama_barang}</div>
             </div>
 
             <div className="grid grid-cols-12 items-start gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
-                Commentaire <span className="text-red-400">*</span>
+                Commentaire
               </div>
-              <div>{formData.comment}</div>
+              <div className="col-span-full md:col-span-8">{formData.comment}</div>
             </div>
 
           <div className="flex flex-col justify-center space-y-4">
