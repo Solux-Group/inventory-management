@@ -87,7 +87,7 @@ module.exports = {
           });
         }
       })
-      .select("nama_showroom no_telp alamat emplacement1 emplacement2 emplacement3 emplacement4  emplacement5");
+      .select("nama_showroom no_telp alamat");
   },
   create: (req, res, next) => {
     const { nama_showroom, no_telp, alamat, emplacement1, emplacement2, emplacement3, emplacement4, emplacement5 } = req.body;
@@ -95,7 +95,7 @@ module.exports = {
 
     if (nama_showroom === undefined || nama_showroom === "") {
       isError = true;
-    } else if (emplacement1 === undefined) {
+    } /* else if (emplacement1 === undefined) {
       isError = true;
     } else if (emplacement2 === undefined) {
       isError = true;
@@ -105,7 +105,7 @@ module.exports = {
       isError = true;
     } else if (emplacement5 === undefined) {
       isError = true;
-    } else if (
+    } */ else if (
       no_telp === undefined ||
       no_telp === "" ||
       no_telp.match(/\D/g)
@@ -149,7 +149,7 @@ module.exports = {
 
     if (nama_showroom === undefined || nama_showroom === "") {
       isError = true;
-    } else if (emplacement1 === undefined) {
+    } /*else if (emplacement1 === undefined) {
       isError = true;
     } else if (emplacement2 === undefined) {
       isError = true;
@@ -159,7 +159,7 @@ module.exports = {
       isError = true;
     } else if (emplacement5 === undefined) {
       isError = true;
-    } else if (
+    } */else if (
       no_telp === undefined ||
       no_telp === "" ||
       no_telp.match(/\D/g)
