@@ -19,7 +19,7 @@ module.exports = {
   getAll: (req, res, next) => {
     const query = req.query;
     const page = parseInt(query.page) || 1;
-    const rows = parseInt(query.rows) || 10;
+    const rows = parseInt(query.rows) || 20;
     let [field, direction] = query.sortby ? query.sortby.split(".") : [];
     direction = direction === "asc" ? 1 : -1;
     const filter = {
@@ -176,7 +176,7 @@ module.exports = {
       });
     }
 
-    const salt = bcrypt.genSaltSync(10);
+    const salt = bcrypt.genSaltSync(20);
     const passwordHash = bcrypt.hashSync(password, salt);
 
     usersModel.insertMany(
@@ -351,7 +351,7 @@ module.exports = {
       });
     }
 
-    const salt = bcrypt.genSaltSync(10);
+    const salt = bcrypt.genSaltSync(20);
     const passwordHash = bcrypt.hashSync(password, salt);
 
     usersModel.findOneAndUpdate(
@@ -386,7 +386,7 @@ module.exports = {
       });
     }
 
-    const salt = bcrypt.genSaltSync(10);
+    const salt = bcrypt.genSaltSync(20);
     const passwordHash = bcrypt.hashSync(password, salt);
 
     usersModel.findOneAndUpdate(
