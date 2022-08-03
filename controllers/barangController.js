@@ -96,7 +96,7 @@ module.exports = {
         }
       })
       .select(
-        "kode_barang nama_barang comment stok harga_jual harga_beli id_kategori id_showroom1 stok1 id_showroom2 stok2 id_satuan"
+        "kode_barang nama_barang"
       );
   },
   create: (req, res, next) => {
