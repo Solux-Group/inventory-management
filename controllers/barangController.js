@@ -81,9 +81,9 @@ module.exports = {
       });
   },
   getById: (req, res, next) => {
-    const { kode_barang } = req.params;
+    const { id } = req.params;
     barangModel
-      .findById(kode_barang, function (error, data) {
+      .findById(id, function (error, data) {
         if (error) {
           return next(error);
         } else {
@@ -96,7 +96,7 @@ module.exports = {
         }
       })
       .select(
-        "kode_barang nama_barang"
+        "kode_barang nama_barang comment stok harga_jual harga_beli id_kategori id_showroom1 stok1 id_showroom2 stok2 id_satuan"
       );
   },
   create: (req, res, next) => {
