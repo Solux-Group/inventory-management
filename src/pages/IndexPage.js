@@ -334,7 +334,7 @@ const IndexPage = () => {
                 CFA{" "}
                 {statistic.pemasukan.toLocaleString({
                   style: "currency",
-                  currency: "USD",
+                  currency: "CFA",
                 })}
               </div>
               <div className="text-sm">Revenu</div>
@@ -351,7 +351,7 @@ const IndexPage = () => {
                 CFA{" "}
                 {statistic.pengeluaran.toLocaleString({
                   style: "currency",
-                  currency: "USD",
+                  currency: "CFA",
                 })}
               </div>
               <div className="text-sm">Dépense</div>
@@ -368,7 +368,7 @@ const IndexPage = () => {
                 CFA{" "}
                 {(statistic.pemasukan - statistic.pengeluaran).toLocaleString({
                   style: "currency",
-                  currency: "USD",
+                  currency: "CFA",
                 })}
               </div>
               <div className="text-sm">Bénéfice</div>

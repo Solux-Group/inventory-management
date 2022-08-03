@@ -12,6 +12,7 @@ const DetailBarang = (props) => {
   const { id } = props.match.params;
   const [formData, setFormData] = useState({
     nama_barang: "",
+    comment: "",
     stok: "",
     harga_jual: "",
     harga_beli: "",
@@ -24,6 +25,7 @@ const DetailBarang = (props) => {
   });
   const [formDataError, setFormDataError] = useState({
     nama_barang: false,
+    comment: false,
     stok: false,
     harga_jual: false,
     harga_beli: false,

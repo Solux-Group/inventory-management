@@ -252,6 +252,7 @@ const TambahBarangMasuk = () => {
                 {`Fournisseurs ${formDataError.id_supplier}`}
               </div>
             </div>
+            
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className="col-span-full md:col-span-4">
                 Marchandises entrantes <span className="text-red-400">*</span>
