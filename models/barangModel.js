@@ -5,6 +5,9 @@ const barangSchema = new mongoose.Schema(
     kode_barang: {
       type: String,
     },
+    comment: {
+      type: String,
+    },
     nama_barang: {
       type: String,
       required: true,

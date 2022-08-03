@@ -18,7 +18,7 @@ module.exports = {
   getAll: (req, res, next) => {
     const query = req.query;
     const page = parseInt(query.page) || 1;
-    const rows = parseInt(query.rows) || 10;
+    const rows = parseInt(query.rows) || 500;
     let [field, direction] = query.sortby ? query.sortby.split(".") : [];
     direction = direction === "asc" ? 1 : -1;
     const filter = {
@@ -87,13 +87,23 @@ module.exports = {
           });
         }
       })
-      .select("nama_showroom no_telp alamat");
+      .select("nama_showroom no_telp alamat emplacement1 emplacement2 emplacement3 emplacement4  emplacement5");
   },
   create: (req, res, next) => {
-    const { nama_showroom, no_telp, alamat } = req.body;
+    const { nama_showroom, no_telp, alamat, emplacement1, emplacement2, emplacement3, emplacement4, emplacement5 } = req.body;
     var isError = false;
 
     if (nama_showroom === undefined || nama_showroom === "") {
+      isError = true;
+    } else if (emplacement1 === undefined) {
+      isError = true;
+    } else if (emplacement2 === undefined) {
+      isError = true;
+    } else if (emplacement3 === undefined) {
+      isError = true;
+    } else if (emplacement4 === undefined) {
+      isError = true;
+    } else if (emplacement5 === undefined) {
       isError = true;
     } else if (
       no_telp === undefined ||
@@ -114,7 +124,9 @@ module.exports = {
     }
 
     showroomModel.insertMany(
-      [{ nama_showroom: nama_showroom, no_telp: no_telp, alamat: alamat }],
+      [{ nama_showroom: nama_showroom, no_telp: no_telp, alamat: alamat,
+         emplacement1: emplacement1, emplacement2: emplacement2, emplacement3: emplacement3,
+         emplacement4: emplacement4,  emplacement5: emplacement5 }],
       function (error) {
         if (error) {
           return next(error);
@@ -128,13 +140,16 @@ module.exports = {
     );
   },
   update: (req, res, next) => {
-    const { nama_showroom, no_telp, alamat } = req.body;
+    const { 
+      nama_showroom, no_telp, alamat,
+      emplacement1, emplacement2, emplacement3, emplacement4, emplacement5, 
+    } = req.body;
     const { id } = req.params;
     var isError = false;
 
     if (nama_showroom === undefined || nama_showroom === "") {
       isError = true;
-    } else if (
+    }else if (
       no_telp === undefined ||
       no_telp === "" ||
       no_telp.match(/\D/g)
@@ -142,7 +157,17 @@ module.exports = {
       isError = true;
     } else if (alamat === undefined || alamat === "") {
       isError = true;
-    }
+    } else if (emplacement1 === undefined) {
+      isError = true;
+    } else if (emplacement2 === undefined) {
+      isError = true;
+    } else if (emplacement3 === undefined) {
+      isError = true;
+    } else if (emplacement4 === undefined) {
+      isError = true;
+    } else if (emplacement5 === undefined) {
+      isError = true;
+    } 
   
     if (isError) {
       return res.json({
@@ -154,7 +179,9 @@ module.exports = {
     
     showroomModel.findByIdAndUpdate(
       id,
-      { nama_showroom: nama_showroom, no_telp: no_telp, alamat: alamat },
+      { nama_showroom: nama_showroom, no_telp: no_telp, alamat: alamat,
+        emplacement1: emplacement1, emplacement2: emplacement2, emplacement3: emplacement3,
+        emplacement4: emplacement4, emplacement5: emplacement5 },
       function (error) {
         if (error) {
           return next(error);
