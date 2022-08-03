@@ -81,9 +81,9 @@ module.exports = {
       });
   },
   getById: (req, res, next) => {
-    const { id } = req.params;
+    const { kode_barang } = req.params;
     barangModel
-      .findById(id, function (error, data) {
+      .findById(kode_barang, function (error, data) {
         if (error) {
           return next(error);
         } else {
