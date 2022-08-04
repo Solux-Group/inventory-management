@@ -103,7 +103,18 @@ module.exports = {
       isError = true;
     } else if (alamat === undefined || alamat === "") {
       isError = true;
-    }
+    } 
+    // else if (emplacement1 === undefined || emplacement1 === "") {
+    //   isError = true;
+    // } else if (emplacement2 === undefined || emplacement2 === "") {
+    //   isError = true;
+    // } else if (emplacement3 === undefined || emplacement3 === "") {
+    //   isError = true;
+    // } else if (emplacement4 === undefined || emplacement4 === "") {
+    //   isError = true;
+    // } else if (emplacement5 === undefined || emplacement5 === "") {
+    //   isError = true;
+    // }
 
     if (isError) {
       return res.json({
@@ -147,17 +158,18 @@ module.exports = {
       isError = true;
     } else if (alamat === undefined || alamat === "") {
       isError = true;
-    } else if (emplacement1 === undefined) {
-      isError = true;
-    } else if (emplacement2 === undefined) {
-      isError = true;
-    } else if (emplacement3 === undefined) {
-      isError = true;
-    } else if (emplacement4 === undefined) {
-      isError = true;
-    } else if (emplacement5 === undefined) {
-      isError = true;
     } 
+    // else if (emplacement1 === undefined || emplacement1 === "") {
+    //   isError = true;
+    // } else if (emplacement2 === undefined || emplacement2 === "") {
+    //   isError = true;
+    // } else if (emplacement3 === undefined || emplacement3 === "") {
+    //   isError = true;
+    // } else if (emplacement4 === undefined || emplacement4 === "") {
+    //   isError = true;
+    // } else if (emplacement5 === undefined || emplacement5 === "") {
+    //   isError = true;
+    // } 
   
     if (isError) {
       return res.json({
