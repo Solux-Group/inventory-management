@@ -30,7 +30,7 @@ const EditShowroom = (props) => {
     // emplacement3: false,
     // emplacement4: false,
     // emplacement5: false,
-    // num_emplacement: false,
+    // num_emplacement: false
   });
   const [showLoading, setShowLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -210,14 +210,14 @@ const EditShowroom = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className={`${
-                formData.num_emplacement >= 1 ? "" : "hidden"
+                (formData.emplacement1 !== "") ? "" : "hidden"
               } col-span-full md:col-span-4`}>
                 Emplacement {1}
               </div>
               <input
                 type="text"
                 className={`${
-                  formData.num_emplacement >= 1 ? "" : "hidden"
+                  (formData.emplacement1 !== "") ? "" : "hidden"
                 } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
                 placeholder="Nom de l'emplacement"
                 name="emplacement1"
@@ -233,14 +233,12 @@ const EditShowroom = (props) => {
                 </div>
               */}
               <div className={`${
-                formData.num_emplacement === 1 ? "" : "hidden"
+                (formData.emplacement1 !== "" && formData.emplacement2 === "") ? "" : "hidden"
               } col-span-full md:col-span-1`}>
                 <button
                   className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
                   onClick={() => {
-                    if(formData.emplacement1 !== "") {
-                      formData.num_emplacement++
-                    }
+                    formData.num_emplacement++
                   }
                 }>
                   +
@@ -250,21 +248,21 @@ const EditShowroom = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className={`${
-                formData.num_emplacement >= 2  && formData.emplacement1 !== "" ? "" : "hidden"
+                (formData.emplacement2 !== "") ? "" : "hidden"
               } col-span-full md:col-span-4`}>
                 Emplacement {2}
               </div>
               <input
                 type="text"
                 className={`${
-                  formData.num_emplacement >= 2  && formData.emplacement1 !== "" ? "" : "hidden"
+                  (formData.emplacement2 !== "") ? "" : "hidden"
                 } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
                 placeholder="Nom de l'emplacement"
                 name="emplacement2"
                 value={formData.emplacement2}
                 onChange={handleChange}
               />
-              {/*
+              {/* 
                 <div
                   className={`${
                     formDataError.emplacement2 ? "" : "hidden"
@@ -273,14 +271,12 @@ const EditShowroom = (props) => {
                 </div>
               */}
               <div className={`${
-                formData.num_emplacement === 2  && formData.emplacement1 !== "" ? "" : "hidden"
+                (formData.emplacement2 !== "" && formData.emplacement3 === "") ? "" : "hidden"
               } col-span-full md:col-span-1`}>
                 <button
                   className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
                   onClick={() => {
-                    if(formData.emplacement2 !== "" ) {
-                      formData.num_emplacement++
-                    }
+                    formData.num_emplacement++
                   }
                 }>
                   +
@@ -290,21 +286,21 @@ const EditShowroom = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className={`${
-                formData.num_emplacement >= 3 && formData.emplacement2 !== "" ? "" : "hidden"
+                (formData.emplacement3 !== "") ? "" : "hidden"
               } col-span-full md:col-span-4`}>
                 Emplacement {3}
               </div>
               <input
                 type="text"
                 className={`${
-                  formData.num_emplacement >= 3 && formData.emplacement2 !== "" ? "" : "hidden"
+                  (formData.emplacement3 !== "") ? "" : "hidden"
                 } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
                 placeholder="Nom de l'emplacement"
                 name="emplacement3"
                 value={formData.emplacement3}
                 onChange={handleChange}
               />
-              {/*
+              {/* 
                 <div
                   className={`${
                     formDataError.emplacement3 ? "" : "hidden"
@@ -313,14 +309,12 @@ const EditShowroom = (props) => {
                 </div>
               */}
               <div className={`${
-                formData.num_emplacement === 3  && formData.emplacement2 !== "" ? "" : "hidden"
+                (formData.emplacement3 !== "" && formData.emplacement4 === "") ? "" : "hidden"
               } col-span-full md:col-span-1`}>
                 <button
                   className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
                   onClick={() => {
-                    if(formData.emplacement3 !== "" ) {
-                      formData.num_emplacement++
-                    }
+                    formData.num_emplacement++
                   }
                 }>
                   +
@@ -330,37 +324,35 @@ const EditShowroom = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className={`${
-                formData.num_emplacement >= 4 && formData.emplacement3 !== "" ? "" : "hidden"
+                (formData.emplacement4 !== "") ? "" : "hidden"
               } col-span-full md:col-span-4`}>
                 Emplacement {4}
               </div>
               <input
                 type="text"
                 className={`${
-                  formData.num_emplacement >= 4 && formData.emplacement3 !== "" ? "" : "hidden"
+                  (formData.emplacement4 !== "") ? "" : "hidden"
                 } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
                 placeholder="Nom de l'emplacement"
                 name="emplacement4"
                 value={formData.emplacement4}
                 onChange={handleChange}
               />
-              {/*
+              {/* 
                 <div
                   className={`${
-                    formDataError.emplacement4 && formData.emplacement4 ? "" : "hidden"
+                    formDataError.emplacement4 ? "" : "hidden"
                   } md:col-start-5 col-span-full text-sm text-red-400`}>
                   {`Cet emplacement ${formDataError.emplacement4}`}
                 </div>
               */}
               <div className={`${
-                formData.num_emplacement === 4  && formData.emplacement3 !== "" ? "" : "hidden"
+                (formData.emplacement4 !== "" && formData.emplacement5 === "") ? "" : "hidden"
               } col-span-full md:col-span-1`}>
                 <button
                   className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
                   onClick={() => {
-                    if(formData.emplacement4 !== "" ) {
-                      formData.num_emplacement++
-                    }
+                    formData.num_emplacement++
                   }
                 }>
                   +
@@ -370,37 +362,33 @@ const EditShowroom = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className={`${
-                formData.num_emplacement >= 5 && formData.emplacement4 !== "" ? "" : "hidden"
+                (formData.emplacement5 !== "") ? "" : "hidden"
               } col-span-full md:col-span-4`}>
                 Emplacement {5}
               </div>
               <input
                 type="text"
                 className={`${
-                  formData.num_emplacement >= 5 && formData.emplacement4 !== "" ? "" : "hidden"
+                  (formData.emplacement5 !== "") ? "" : "hidden"
                 } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
                 placeholder="Nom de l'emplacement"
                 name="emplacement5"
                 value={formData.emplacement5}
                 onChange={handleChange}
               />
-              {/*
+              {/* 
                 <div
                   className={`${
-                    formDataError.emplacement5 && formData.emplacement4 ? "" : "hidden"
+                    formDataError.emplacement5 ? "" : "hidden"
                   } md:col-start-5 col-span-full text-sm text-red-400`}>
                   {`Cet emplacement ${formDataError.emplacement5}`}
                 </div>
               */}
-              <div className={`${
-                formData.num_emplacement === 5  && formData.emplacement4 !== "" ? "" : "hidden"
-              } col-span-full md:col-span-1 hidden`}>
+              <div className="hidden col-span-full md:col-span-1">
                 <button
                   className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
                   onClick={() => {
-                    if(formData.emplacement5 !== "" ) {
-                      formData.num_emplacement++
-                    }
+                    formData.num_emplacement++
                   }
                 }>
                   +
@@ -448,7 +436,8 @@ const EditShowroom = (props) => {
 
           </div>
           
-          <button className="bg-indigo-500 hover:bg-indigo-400 text-indigo-100 rounded focus:ring focus:ring-indigo-100 focus:outline-none w-full px-4 py-1.5 mt-6">
+          <button 
+            className="bg-indigo-500 hover:bg-indigo-400 text-indigo-100 rounded focus:ring focus:ring-indigo-100 focus:outline-none w-full px-4 py-1.5 mt-6">
             Sauvegarder
           </button>
         </form>
