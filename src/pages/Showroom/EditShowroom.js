@@ -70,6 +70,7 @@ const EditShowroom = (props) => {
       })
       .then((response) => {
         setFormData(response.data.data);
+        setFormData((state) => ({ ...state, num_emplacement: 1 }));
       })
       .catch((error) => {
         // Unauthorized
@@ -210,14 +211,14 @@ const EditShowroom = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className={`${
-                (formData.emplacement1 !== "") ? "" : "hidden"
+                formData.emplacement1 !== "" ? "" : formData.num_emplacement >= 1 ? "" : "hidden"
               } col-span-full md:col-span-4`}>
                 Emplacement {1}
               </div>
               <input
                 type="text"
                 className={`${
-                  (formData.emplacement1 !== "") ? "" : "hidden"
+                  formData.emplacement1 !== "" ? "" : formData.num_emplacement >= 1 ? "" : "hidden"
                 } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
                 placeholder="Nom de l'emplacement"
                 name="emplacement1"
@@ -233,12 +234,15 @@ const EditShowroom = (props) => {
                 </div>
               */}
               <div className={`${
-                (formData.emplacement1 !== "" && formData.emplacement2 === "") ? "" : "hidden"
+                formData.num_emplacement === 1 ? "" : "hidden"
               } col-span-full md:col-span-1`}>
                 <button
                   className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
+                  type="button"
                   onClick={() => {
-                    formData.num_emplacement++
+                    if(formData.emplacement1 !== "") {
+                      setFormData((state) => ({ ...state, num_emplacement: 2 }));
+                    }
                   }
                 }>
                   +
@@ -248,14 +252,14 @@ const EditShowroom = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className={`${
-                (formData.emplacement2 !== "") ? "" : "hidden"
+                formData.emplacement2 !== "" ? "" : formData.num_emplacement >= 2 ? "" : "hidden"
               } col-span-full md:col-span-4`}>
                 Emplacement {2}
               </div>
               <input
                 type="text"
                 className={`${
-                  (formData.emplacement2 !== "") ? "" : "hidden"
+                  formData.emplacement2 !== "" ? "" : formData.num_emplacement >= 2 ? "" : "hidden"
                 } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
                 placeholder="Nom de l'emplacement"
                 name="emplacement2"
@@ -271,12 +275,15 @@ const EditShowroom = (props) => {
                 </div>
               */}
               <div className={`${
-                (formData.emplacement2 !== "" && formData.emplacement3 === "") ? "" : "hidden"
+                formData.num_emplacement === 2 ? "" : "hidden"
               } col-span-full md:col-span-1`}>
                 <button
                   className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
+                  type="button"
                   onClick={() => {
-                    formData.num_emplacement++
+                    if(formData.emplacement2 !== "") {
+                      setFormData((state) => ({ ...state, num_emplacement: 3 }));
+                    }
                   }
                 }>
                   +
@@ -286,14 +293,14 @@ const EditShowroom = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className={`${
-                (formData.emplacement3 !== "") ? "" : "hidden"
+                formData.emplacement3 !== "" ? "" : formData.num_emplacement >= 3 ? "" : "hidden"
               } col-span-full md:col-span-4`}>
                 Emplacement {3}
               </div>
               <input
                 type="text"
                 className={`${
-                  (formData.emplacement3 !== "") ? "" : "hidden"
+                  formData.emplacement3 !== "" ? "" : formData.num_emplacement >= 3 ? "" : "hidden"
                 } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
                 placeholder="Nom de l'emplacement"
                 name="emplacement3"
@@ -309,12 +316,15 @@ const EditShowroom = (props) => {
                 </div>
               */}
               <div className={`${
-                (formData.emplacement3 !== "" && formData.emplacement4 === "") ? "" : "hidden"
+                formData.num_emplacement === 3 ? "" : "hidden"
               } col-span-full md:col-span-1`}>
                 <button
                   className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
+                  type="button"
                   onClick={() => {
-                    formData.num_emplacement++
+                    if(formData.emplacement3 !== "") {
+                      setFormData((state) => ({ ...state, num_emplacement: 4 }));
+                    }
                   }
                 }>
                   +
@@ -324,14 +334,14 @@ const EditShowroom = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className={`${
-                (formData.emplacement4 !== "") ? "" : "hidden"
+                formData.emplacement4 !== "" ? "" : formData.num_emplacement >= 4 ? "" : "hidden"
               } col-span-full md:col-span-4`}>
                 Emplacement {4}
               </div>
               <input
                 type="text"
                 className={`${
-                  (formData.emplacement4 !== "") ? "" : "hidden"
+                  formData.emplacement4 !== "" ? "" : formData.num_emplacement >= 4 ? "" : "hidden"
                 } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
                 placeholder="Nom de l'emplacement"
                 name="emplacement4"
@@ -347,12 +357,15 @@ const EditShowroom = (props) => {
                 </div>
               */}
               <div className={`${
-                (formData.emplacement4 !== "" && formData.emplacement5 === "") ? "" : "hidden"
+                formData.num_emplacement === 4 ? "" : "hidden"
               } col-span-full md:col-span-1`}>
                 <button
                   className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
+                  type="button"
                   onClick={() => {
-                    formData.num_emplacement++
+                    if(formData.emplacement4 !== "") {
+                      setFormData((state) => ({ ...state, num_emplacement: 5 }));
+                    }
                   }
                 }>
                   +
@@ -362,14 +375,14 @@ const EditShowroom = (props) => {
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
               <div className={`${
-                (formData.emplacement5 !== "") ? "" : "hidden"
+                formData.emplacement5 !== "" ? "" : formData.num_emplacement >= 5 ? "" : "hidden"
               } col-span-full md:col-span-4`}>
                 Emplacement {5}
               </div>
               <input
                 type="text"
                 className={`${
-                  (formData.emplacement5 !== "") ? "" : "hidden"
+                  formData.emplacement5 !== "" ? "" : formData.num_emplacement >= 5 ? "" : "hidden"
                 } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
                 placeholder="Nom de l'emplacement"
                 name="emplacement5"
@@ -384,16 +397,23 @@ const EditShowroom = (props) => {
                   {`Cet emplacement ${formDataError.emplacement5}`}
                 </div>
               */}
-              <div className="hidden col-span-full md:col-span-1">
+              {/*
+              <div className={`${
+                formData.num_emplacement === 5 ? "" : "hidden"
+              } col-span-full md:col-span-1`}>
                 <button
                   className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
+                  type="button"
                   onClick={() => {
-                    formData.num_emplacement++
+                    if(formData.emplacement5 !== "") {
+                      setFormData((state) => ({ ...state, num_emplacement: 6 }));
+                    }
                   }
                 }>
                   +
                 </button>
               </div>
+              */}
             </div>
 
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
@@ -437,7 +457,9 @@ const EditShowroom = (props) => {
           </div>
           
           <button 
-            className="bg-indigo-500 hover:bg-indigo-400 text-indigo-100 rounded focus:ring focus:ring-indigo-100 focus:outline-none w-full px-4 py-1.5 mt-6">
+            className="bg-indigo-500 hover:bg-indigo-400 text-indigo-100 rounded focus:ring focus:ring-indigo-100 focus:outline-none w-full px-4 py-1.5 mt-6"
+            type="submit" // It is the default parameter; I did not have to specify that it trigger the form submission
+            >
             Sauvegarder
           </button>
         </form>
