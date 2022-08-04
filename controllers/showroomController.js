@@ -95,16 +95,6 @@ module.exports = {
 
     if (nama_showroom === undefined || nama_showroom === "") {
       isError = true;
-    } else if (emplacement1 === undefined) {
-      isError = true;
-    } else if (emplacement2 === undefined) {
-      isError = true;
-    } else if (emplacement3 === undefined) {
-      isError = true;
-    } else if (emplacement4 === undefined) {
-      isError = true;
-    } else if (emplacement5 === undefined) {
-      isError = true;
     } else if (
       no_telp === undefined ||
       no_telp === "" ||
