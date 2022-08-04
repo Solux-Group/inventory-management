@@ -23,12 +23,12 @@ const TambahShowroom = () => {
   });
   const [formDataError, setFormDataError] = useState({
     nama_showroom: false,
-    emplacement1: false,
-    emplacement2: false,
-    emplacement3: false,
-    emplacement4: false,
-    emplacement5: false,
-    num_emplacement: false,
+    // emplacement1: false,
+    // emplacement2: false,
+    // emplacement3: false,
+    // emplacement4: false,
+    // emplacement5: false,
+    // num_emplacement: false,
     no_telp: false,
     alamat: false,
   });
@@ -50,7 +50,7 @@ const TambahShowroom = () => {
         value = value.replace(/\D/g, "");
       }
 
-      if (!value) {
+      if (formData.nama_showroom === "" || formData.no_telp === "" || formData.alamat === "") {
         isError = true;
         setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
       }
