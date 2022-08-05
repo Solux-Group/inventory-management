@@ -7,30 +7,29 @@ import { Helmet } from "react-helmet";
 import { Button } from "../../components/elements/Button";
 import Alert from "../../components/elements/Alert";
 import Loading from "../../components/elements/Loading";
-import { render } from '@testing-library/react';
 
 const TambahShowroom = () => {
   const [formData, setFormData] = useState({
     nama_showroom: "",
+    no_telp: "",
+    alamat: "",
     emplacement1: "",
     emplacement2: "",
     emplacement3: "",
     emplacement4: "",
     emplacement5: "",
-    num_emplacement: 1,
-    no_telp: "",
-    alamat: "",
+    num_emplacement: 1
   });
   const [formDataError, setFormDataError] = useState({
     nama_showroom: false,
-    emplacement1: false,
-    emplacement2: false,
-    emplacement3: false,
-    emplacement4: false,
-    emplacement5: false,
-    num_emplacement: false,
     no_telp: false,
     alamat: false,
+    // emplacement1: false,
+    // emplacement2: false,
+    // emplacement3: false,
+    // emplacement4: false,
+    // emplacement5: false,
+    // num_emplacement: false,
   });
   const [showLoading, setShowLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -50,7 +49,7 @@ const TambahShowroom = () => {
         value = value.replace(/\D/g, "");
       }
 
-      if (!value) {
+      /* if (!value) */ if (formData.nama_showroom === "" || formData.no_telp === "" || formData.alamat === "") {
         isError = true;
         setFormDataError((state) => ({ ...state, [name]: "doit être rempli" }));
       }
