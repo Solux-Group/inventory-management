@@ -323,7 +323,7 @@ const TambahBarang = () => {
                 className={`${
                   formDataError.id_kategori ? "" : "hidden"
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`Kategori ${formDataError.id_kategori}`}
+                {`Categori ${formDataError.id_kategori}`}
               </div>
             </div>
             <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
@@ -350,7 +350,7 @@ const TambahBarang = () => {
                 className={`${
                   formDataError.id_satuan ? "" : "hidden"
                 } md:col-start-5 col-span-full text-sm text-red-400`}>
-                {`Satuan ${formDataError.id_satuan}`}
+                {`Unité ${formDataError.id_satuan}`}
               </div>
             </div>
 
@@ -397,6 +397,47 @@ const TambahBarang = () => {
                 formDataError.stok1 ? "" : "hidden"
               } md:col-start-5 col-span-full text-sm text-red-400`}>
               {`Stok ${formDataError.stok1}`}
+            </div>
+          </div>
+
+          
+          <div className="grid grid-cols-12 items-center gap-x-4 gap-y-1">
+            <div className={`${
+              formData.num_emplacement >= 1 ? "" : "hidden"
+            } col-span-full md:col-span-4`}>
+              Emplacement {1}
+            </div>
+            <input
+              type="text"
+              className={`${
+                formData.num_emplacement >= 1 ? "" : "hidden"
+              } col-span-full md:col-span-7 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:outline-none p-2`}
+              placeholder="Nom de l'emplacement"
+              name="emplacement1"
+              value={formData.emplacement1}
+              onChange={handleChange}
+            />
+            {/* 
+              <div
+                className={`${
+                  formDataError.emplacement1 ? "" : "hidden"
+                } md:col-start-5 col-span-full text-sm text-red-400`}>
+                {`Cet emplacement ${formDataError.emplacement1}`}
+              </div>
+            */}
+            <div className={`${
+              formData.num_emplacement === 1 ? "" : "hidden"
+            } col-span-full md:col-span-1`}>
+              <button
+                className="border border-indigo-300 bg-indigo-50 hover:bg-indigo-200 text-indigo-600 rounded-full focus:ring focus:ring-indigo-100 focus:outline-none px-3 py-1"
+                onClick={() => {
+                  if(formData.emplacement1 !== "") {
+                    formData.num_emplacement++
+                  }
+                }
+              }>
+                +
+              </button>
             </div>
           </div>
 
