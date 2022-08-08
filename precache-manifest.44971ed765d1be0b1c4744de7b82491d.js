@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "7f85344769ab3ddf0141",
+    "revision": "b983f670ea6513890b30",
     "url": "/inventory-management/static/css/main.5ec3595d.chunk.css"
   },
   {
-    "revision": "7f85344769ab3ddf0141",
-    "url": "/inventory-management/static/js/main.612de163.chunk.js"
+    "revision": "b983f670ea6513890b30",
+    "url": "/inventory-management/static/js/main.c29b93c6.chunk.js"
   },
   {
     "revision": "665e70f04a797e42d703",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/inventory-management/static/js/2.c4810be2.chunk.js"
   },
   {
-    "revision": "b6d6838eacad3428dbdded885722cf77",
+    "revision": "a731c2d5d24909528b25c74e8f950b57",
     "url": "/inventory-management/index.html"
   }
 ];
