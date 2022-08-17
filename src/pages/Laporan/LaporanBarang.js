@@ -41,6 +41,17 @@ const LaporanBarang = () => {
     { label: "Utilisateur", key: "username" },
     { label: "Date de sortie", key: "created_at" },
   ];
+  const headersCSVBarangTransfert = [
+    { label: "No Transaction", key: "no_transaksi" },
+    { label: "Nom des marchandises", key: "nama_barang" },
+    { label: "Showroom de départ", key: "nama_showroom_up" },
+    { label: "Showroom d'arrivée", key: "nama_showroom_down" },
+    { label: "Quantité", key: "kuantitas" },
+    { label: "Prix ​​de vente", key: "harga_jual" },
+    { label: "Prix ​​total", key: "total_harga" },
+    { label: "Utilisateur", key: "username" },
+    { label: "Date de sortie", key: "created_at" },
+  ];
   const [headersCSV, setHeadersCSV] = useState(null);
   const [dataCSV, setDataCSV] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
@@ -87,10 +98,13 @@ const LaporanBarang = () => {
     const linkDownload = csvLink.current.link;
     if (laporan.type === "barang_masuk") {
       setHeadersCSV(headersCSVBarangMasuk);
-      linkDownload.download = `Laporan_Barang_Masuk_${laporan.start}_${laporan.end}.csv`;
+      linkDownload.download = `Rapport_Marchandises_Entrés_${laporan.start}_${laporan.end}.csv`;
     } else if (laporan.type === "barang_keluar") {
       setHeadersCSV(headersCSVBarangKeluar);
-      linkDownload.download = `Laporan_Barang_Keluar_${laporan.start}_${laporan.end}.csv`;
+      linkDownload.download = `Rapport_Marchandises_Sorties_${laporan.start}_${laporan.end}.csv`;
+    } else if (laporan.type === "barang_transfert") {
+      setHeadersCSV(headersCSVBarangTransfert);
+      linkDownload.download = `Rapport_Marchandises_Transférés_${laporan.start}_${laporan.end}.csv`;
     }
 
     fetchLaporan();
@@ -140,6 +154,20 @@ const LaporanBarang = () => {
                 username: value.user_input ? value.user_input.nama : "",
                 created_at: moment(value.created_at).format("YYYY MM DD"),
               });
+            } else if (laporan.type === "barang_transfert") {
+              data.push({
+                no_transaksi: value.no_transaksi,
+                nama_barang: value.barang_transfert
+                  ? value.barang_transfert.nama_barang
+                  : "",
+                nama_showroom_up: value.id_showroom_up.nama_showroom,
+                nama_showroom_down: value.id_showroom_down.nama_showroom,
+                kuantitas: value.kuantitas,
+                harga_jual: value.harga_jual,
+                total_harga: value.harga_jual * value.kuantitas,
+                username: value.user_input ? value.user_input.nama : "",
+                created_at: moment(value.created_at).format("YYYY MM DD"),
+              });
             }
           });
           return data;
@@ -167,7 +195,7 @@ const LaporanBarang = () => {
   return (
     <>
       <Helmet>
-        <title>Signaler | INVENTORY</title>
+        <title>Rapport | INVENTORY</title>
       </Helmet>
       {showLoading ? (
         <div className="fixed bg-transparent w-full h-full z-30">
@@ -217,6 +245,20 @@ const LaporanBarang = () => {
               <div className="text-red-400 text-sm">
                 {laporanError.type ? `Laporan doit être rempli` : ""}
               </div>
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  className="mr-2"
+                  name="type"
+                  value="barang_transfert"
+                  onChange={handleChange}
+                  checked={laporan.type === "barang_transfert" ? true : false}
+                />
+                Marchandises transférés
+              </label>
+              <div className="text-red-400 text-sm">
+                {laporanError.type ? `Laporan doit être rempli` : ""}
+              </div>
             </div>
           </div>
           <div className="flex flex-col space-y-2">
@@ -258,7 +300,7 @@ const LaporanBarang = () => {
           headers={headersCSV}
           data={dataCSV || []}
           ref={csvLink}
-          filename="Laporan_INVENTORY.csv"
+          filename="Rapport_Marchandises.csv"
           target="_blank"
         />
       </Card>
