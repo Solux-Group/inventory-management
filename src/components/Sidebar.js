@@ -94,7 +94,7 @@ const Sidebar = ({ show, onShown = () => {} }) => {
           href: "/barang_transfert",
         },
         {
-          name: "Signaler",
+          name: "Rapport",
           icon: <FontAwesomeIcon icon={faFileArchive} />,
           href: "/laporan",
         },
@@ -143,7 +143,7 @@ const Sidebar = ({ show, onShown = () => {} }) => {
           href: "/barang_transfert",
         },
         {
-          name: "Signaler",
+          name: "Rapport",
           icon: <FontAwesomeIcon icon={faFileAlt} />,
           href: "/laporan",
         },
