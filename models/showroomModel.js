@@ -7,23 +7,23 @@ const showroomSchema = new mongoose.Schema({
   },
   emplacement1: {
     type: String,
-    required: true,
+    required: false, // It is not mandatory
   },
   emplacement2: {
     type: String,
-    required: true,
+    required: false, // It is not mandatory
   },
   emplacement3: {
     type: String,
-    required: true,
+    required: false, // It is not mandatory
   },
   emplacement4: {
     type: String,
-    required: true,
+    required: false, // It is not mandatory
   },
   emplacement5: {
     type: String,
-    required: true,
+    required: false, // It is not mandatory
   },
   no_telp: {
     type: String,
