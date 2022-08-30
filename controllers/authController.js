@@ -1,6 +1,6 @@
 const usersModel = require("../models/usersModel");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+//const bcrypt = require("bcrypt");
 const { SECRET } = process.env;
 
 module.exports = {
@@ -16,7 +16,15 @@ module.exports = {
 
         if (data) {
 
-          if (!bcrypt.compareSync(password, data.password)) {
+          // if (!bcrypt.compareSync(password, data.password)) {
+          //   return res.json({
+          //     status: 403,
+          //     message: "Le nom d'utilisateur ou le mot de passe utilisé est erroné",
+          //     error: true
+          //   })
+          // }
+
+          if (password !== data.password) {
             return res.json({
               status: 403,
               message: "Le nom d'utilisateur ou le mot de passe utilisé est erroné",
