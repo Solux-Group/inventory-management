@@ -176,8 +176,8 @@ module.exports = {
       });
     }
 
-    const salt = bcrypt.genSaltSync(500);
-    const passwordHash = bcrypt.hashSync(password, salt);
+    // const salt = bcrypt.genSaltSync(500);
+    // const passwordHash = bcrypt.hashSync(password, salt);
 
     usersModel.insertMany(
       [
@@ -186,7 +186,8 @@ module.exports = {
           foto: foto,
           nama: nama,
           email: email,
-          password: passwordHash,
+          password: password,
+          //password: passwordHash,
           no_telp: no_telp,
           role: role,
           status: status,
