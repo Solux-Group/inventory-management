@@ -4,7 +4,8 @@ module.exports = {
   getAll: (req, res, next) => {
     const query = req.query;
     const page = parseInt(query.page) || 1;
-    const rows = parseInt(query.rows) || 500;
+    // const rows = parseInt(query.rows) || 500;
+    const rows = 500;
     let [field, direction] = query.sortby ? query.sortby.split(".") : [];
     direction = direction === "asc" ? 1 : -1;
     const filter = { nama_kategori: new RegExp(query.q, "i") };
